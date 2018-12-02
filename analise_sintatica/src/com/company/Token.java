@@ -1,9 +1,5 @@
-package com.company;
+package lexer;
 
-/**
- *
- * @author gustavo
- */
 public class Token {
     
 	private String lexema;
@@ -19,11 +15,13 @@ public class Token {
       this.coluna = coluna;
    }
 	
-   public Tag getClasse() {		
+   public Tag getClasse() {
+		
 		return classe;
 	}
 	
-   public void setClasse(Tag classe) {	
+   public void setClasse(Tag classe) {
+		
 		this.classe = classe;
    }
 	
@@ -38,23 +36,23 @@ public class Token {
    }
     
    public int getLinha() {
-  		return linha;
+   	return linha;
    }
 
-    public void setLinha(int linha) {
-        this.linha = linha;
-    }
+   public void setLinha(int linha) {
+   	this.linha = linha;
+   }
 
-    public int getColuna() {
-        return coluna;
-    }
+   public int getColuna() {
+   	return coluna;
+   }
 
-    public void setColuna(int coluna) {
-        this.coluna = coluna;
-    }
+   public void setColuna(int coluna) {
+   	this.coluna = coluna;
+   }
     
-    @Override
-    public String toString() {
-        return "<" + classe + ", \"" + lexema + "\">, linha: " + linha + " coluna: " + coluna + "";
-    }
+   @Override
+   public String toString() {
+   	return "<" + classe + ", \"" + lexema + "\">";
+   }
 }
