@@ -3,12 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="72c9973c-8ade-4b90-a763-9e0b3a39d419" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../analise_sintatica/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../analise_sintatica/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../analise_sintatica/out/production/analise_sintatica/com/company/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../analise_sintatica/out/production/analise_sintatica/com/company/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../analise_sintatica/out/production/analise_sintatica/com/company/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/../analise_sintatica/out/production/analise_sintatica/com/company/Parser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../analise_sintatica/out/production/analise_sintatica/com/company/TS.class" beforeDir="false" afterPath="$PROJECT_DIR$/../analise_sintatica/out/production/analise_sintatica/com/company/TS.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../analise_sintatica/out/production/analise_sintatica/com/company/Tag.class" beforeDir="false" afterPath="$PROJECT_DIR$/../analise_sintatica/out/production/analise_sintatica/com/company/Tag.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../analise_sintatica/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../analise_sintatica/src/com/company/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../analise_sintatica/src/com/company/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../analise_sintatica/src/com/company/Parser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../analise_sintatica/src/com/company/TS.java" beforeDir="false" afterPath="$PROJECT_DIR$/../analise_sintatica/src/com/company/TS.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../analise_sintatica/src/com/company/Tag.java" beforeDir="false" afterPath="$PROJECT_DIR$/../analise_sintatica/src/com/company/Tag.java" afterDir="false" />
     </list>
@@ -113,7 +107,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543772528742" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543773949661" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../lexer" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -148,15 +142,16 @@
       <option name="presentableId" value="Default" />
       <updated>1543758663358</updated>
       <workItem from="1543758665223" duration="1372000" />
-      <workItem from="1543767963832" duration="3299000" />
+      <workItem from="1543767963832" duration="3727000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4671000" />
+    <option name="totallyTimeSpent" value="5099000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="40" width="974" height="1047" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22319475" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />

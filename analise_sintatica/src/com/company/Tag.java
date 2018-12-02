@@ -41,5 +41,25 @@ public enum Tag {
     // palavra reservada
     KW_ALGORITMO,
     KW_ATE,
-    KW;
+    KW_DECLARE,
+    KW_E,
+    KW_ENQUANTO,
+    KW_ESCREVA,
+    KW_FACA,
+    KW_FALSO,
+    KW_FIM,
+    KW_INICIO,
+    KW_LEIA,
+    KW_LITERAL,
+    KW_LOGICO,
+    KW_NULO,
+    KW_NUMERICO,
+    KW_OU,
+    KW_PARA,
+    KW_REPITA,
+    KW_RETORNE,
+    KW_SE,
+    KW_SENAO,
+    KW_SUBROTINA,
+    KW_VERDADEIRO;
 }

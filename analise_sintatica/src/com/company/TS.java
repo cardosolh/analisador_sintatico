@@ -18,28 +18,28 @@ public class TS {
         // Inserindo as palavras reservadas
         this.tabelaSimbolos.put("algoritmo",(new Token(Tag.KW_ALGORITMO,"algoritmo",0,0)));
         this.tabelaSimbolos.put("ate",(new Token(Tag.KW_ATE,"ate",0,0)));
-        this.tabelaSimbolos.put("declare",(new Token(Tag.KW,"declare",0,0)));
-        this.tabelaSimbolos.put("e",(new Token(Tag.KW,"e",0,0)));
-        this.tabelaSimbolos.put("enquanto",(new Token(Tag.KW,"enquanto",0,0)));
-        this.tabelaSimbolos.put("escreva",(new Token(Tag.KW,"escreva",0,0)));
-        this.tabelaSimbolos.put("faca",(new Token(Tag.KW,"faca",0,0)));
-        this.tabelaSimbolos.put("falso",(new Token(Tag.KW,"falso",0,0)));
-        this.tabelaSimbolos.put("fim",(new Token(Tag.KW,"fim",0,0)));
-        this.tabelaSimbolos.put("inicio",(new Token(Tag.KW,"inicio",0,0)));
-        this.tabelaSimbolos.put("leia",(new Token(Tag.KW,"leia",0,0)));
-        this.tabelaSimbolos.put("literal",(new Token(Tag.KW,"literal",0,0)));
-        this.tabelaSimbolos.put("logico",(new Token(Tag.KW,"logico",0,0)));
-        this.tabelaSimbolos.put("nulo",(new Token(Tag.KW,"nulo",0,0)));
-        this.tabelaSimbolos.put("numerico",(new Token(Tag.KW,"numerico",0,0)));
-        this.tabelaSimbolos.put("ou",(new Token(Tag.KW,"ou",0,0)));
-        this.tabelaSimbolos.put("para",(new Token(Tag.KW,"para",0,0)));
-        this.tabelaSimbolos.put("repita",(new Token(Tag.KW,"repita",0,0)));
-        this.tabelaSimbolos.put("retorne",(new Token(Tag.KW,"retorne",0,0)));
-        this.tabelaSimbolos.put("se",(new Token(Tag.KW,"se",0,0)));
-        this.tabelaSimbolos.put("senao",(new Token(Tag.KW,"senao",0,0)));
-        this.tabelaSimbolos.put("subrotina",(new Token(Tag.KW,"subrotina",0,0)));
-        this.tabelaSimbolos.put("verdadeiro",(new Token(Tag.KW,"verdadeiro",0,0)));
-        
+        this.tabelaSimbolos.put("declare",(new Token(Tag.KW_DECLARE,"declare",0,0)));
+        this.tabelaSimbolos.put("e",(new Token(Tag.KW_E,"e",0,0)));
+        this.tabelaSimbolos.put("enquanto",(new Token(Tag.KW_ENQUANTO,"enquanto",0,0)));
+        this.tabelaSimbolos.put("escreva",(new Token(Tag.KW_ESCREVA,"escreva",0,0)));
+        this.tabelaSimbolos.put("faca",(new Token(Tag.KW_FACA,"faca",0,0)));
+        this.tabelaSimbolos.put("falso",(new Token(Tag.KW_FALSO,"falso",0,0)));
+        this.tabelaSimbolos.put("fim",(new Token(Tag.KW_FIM,"fim",0,0)));
+        this.tabelaSimbolos.put("inicio",(new Token(Tag.KW_INICIO,"inicio",0,0)));
+        this.tabelaSimbolos.put("leia",(new Token(Tag.KW_LEIA,"leia",0,0)));
+        this.tabelaSimbolos.put("literal",(new Token(Tag.KW_LITERAL,"literal",0,0)));
+        this.tabelaSimbolos.put("logico",(new Token(Tag.KW_LOGICO,"logico",0,0)));
+        this.tabelaSimbolos.put("nulo",(new Token(Tag.KW_NULO,"nulo",0,0)));
+        this.tabelaSimbolos.put("numerico",(new Token(Tag.KW_NUMERICO,"numerico",0,0)));
+        this.tabelaSimbolos.put("ou",(new Token(Tag.KW_OU,"ou",0,0)));
+        this.tabelaSimbolos.put("para",(new Token(Tag.KW_PARA,"para",0,0)));
+        this.tabelaSimbolos.put("repita",(new Token(Tag.KW_REPITA,"repita",0,0)));
+        this.tabelaSimbolos.put("retorne",(new Token(Tag.KW_RETORNE,"retorne",0,0)));
+        this.tabelaSimbolos.put("se",(new Token(Tag.KW_SE,"se",0,0)));
+        this.tabelaSimbolos.put("senao",(new Token(Tag.KW_SENAO,"senao",0,0)));
+        this.tabelaSimbolos.put("subrotina",(new Token(Tag.KW_SUBROTINA,"subrotina",0,0)));
+        this.tabelaSimbolos.put("verdadeiro",(new Token(Tag.KW_VERDADEIRO,"verdadeiro",0,0)));
+
         
 
 
