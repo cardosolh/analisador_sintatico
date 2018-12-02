@@ -1,5 +1,3 @@
-package compiladores;
-
 import java.io.*;
 
 /**

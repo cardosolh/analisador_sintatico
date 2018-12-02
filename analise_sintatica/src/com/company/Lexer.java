@@ -73,29 +73,40 @@ public class Lexer {
          System.exit(4);
       }
     }
+    public char leCaractere(){
+       char c;
+        c = '\u0000';
+        try {
+            lookahead = instance_file.read();
+            if(lookahead != END_OF_FILE) {
+                c = (char) lookahead;
+                n_column++;
+            }
+        }
+        catch(IOException e) {
+            System.out.println("Erro na leitura do arquivo");
+            System.exit(3);
+        }
+        return c;
+
+   }
 
    // Obtém próximo token: Esse metodo eh a implementacao do AFD
    public Token getToken() {
 
 	StringBuilder lexema = new StringBuilder();
-	int estado = 1;
-	char c;
+	int estado = 0;
+	char c ;
+
 		
 	while(true) {
-      c = '\u0000'; // null char
+       // null char
+       c = leCaractere();
+
+
             
       // avanca caractere
-      try {
-         lookahead = instance_file.read();
-		   if(lookahead != END_OF_FILE) {
-            c = (char) lookahead;
-            n_column++;
-         }
-      }
-      catch(IOException e) {
-         System.out.println("Erro na leitura do arquivo");
-         System.exit(3);
-      }
+
             
       // movimentacao do automato
        switch (estado) {

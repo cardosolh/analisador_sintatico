@@ -6,9 +6,12 @@ public class Main {
         // TODO code application logic here
 
         Lexer lexer = new Lexer("primeiro_portugolo.ptgl");
+
+
         Parser parser = new Parser(lexer);
 
         // primeiro procedimento do Javinha: Programa()
+
         parser.Compilador();
 
         parser.fechaArquivos();
