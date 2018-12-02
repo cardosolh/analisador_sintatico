@@ -71,8 +71,168 @@ public class Parser {
     //
     */
 
+
+    //Compilador →Programa $ [1]
+	public void Compilador(){
+
+	}
+
+	//Programa → "algoritmo" RegexDeclVar ListaCmd "fim" "algoritmo" ListaRotina [2]
+	public void Programa() {
+
+	}
+
+	//RegexDeclVar → “declare” Tipo ListaID";" DeclaraVar  [3] | ε [4]
+	public void RegexDeclVar() {
+
+	}
+
+	//DeclaraVar → Tipo ListaID ";" DeclaraVar  [5] | ε [6]
+	public void DeclaraVar() {
+
+	}
+
+	//ListaRotina → ListaRotinaLinha [7]
+	public void ListaRotina() {
+
+	}
+
+	//ListaRotinaLinha → Rotina ListaRotinaLinha [8] | ε [9]
+	public void ListaRotinaLinha() {
+
+	}
+
+	//Rotina → "subrotina" ID "(" ListaParam ")" RegexDeclVar ListaCmd Retorno "fim" "subrotina" [10]
+	public void Rotina() {
+
+	}
+
+	//ListaParam → Param ListaParamLinha [11]
+	public void ListaParam() {
+
+	}
+
+	//ListaParamLinha → "," ListaParam [12] | ε [13]
+	public void ListaParamLinha() {
+
+	}
+
+	//Param → ListaID Tipo [14]
+	public void Param() {
+
+	}
+
+	//ListaID → ID ListaIDLinha [15]
+	public void ListaID () {
+
+	}
+
+	//ListaIDLinha → "," ListaID [16] | ε [17]
+	public void  ListaIDLinha(){
+
+	}
+
+	//Retorno → "retorne" Expressao [18] | ε [19]
+	public void Retorno(){
+
+	}
+
+	//Tipo → "logico" [20] | "numerico" [21] | "literal" [22] | "nulo" [23]
+	public void Tipo() {
+
+	}
+
+	//ListaCmd → ListaCmdLinha [24]
+	public void ListaCmd() {
+
+	}
+
+	//ListaCmdLinha → Cmd ListaCmdLinha [25] | ε [26]
+	public void ListaCmdLinha(){
+
+	}
+	//Cmd → CmdSe [27] | CmdEnquanto [28] | CmdPara [29] | CmdRepita [30] |
+	//		ID Cmdlinha [31] | CmdEscreva [32] | CmdLeia [33]
+	public void Cmd() {
+
+	}
+
+	//CmdLinha → CmdAtrib [34] | CmdChamaRotina [35]
+	public void CmdLinha() {
+
+	}
+
+	//CmdSe → "se" "(" Expressao ")" "inicio" ListaCmd "fim" CmdSeLinha [36]
+	public void CmdSe(){
+
+	}
+
+	//CmdSeLinha → "senao" "inicio" ListaCmd "fim" [37] | ε [38]
+	public void CmdSeLinha() {
+
+	}
+
+	//CmdEnquanto → "enquanto" "(" Expressao ")" "faca" "inicio" ListaCmd "fim" [39]
+	public void CmdEnquanto(){
+
+	}
+
+	//CmdPara → "para" ID CmdAtrib "ate" Expressao "faca" "inicio" ListaCmd "fim" [40]
+	public void CmdPara() {
+
+	}
+
+	//CmdRepita → "repita" ListaCmd "ate" Expressao [41]
+	public void CmdRepita(){
+
+	}
+
+	//CmdAtrib → "<--" Expressao ";" [42]
+	public void CmdAtrib() {
+
+	}
+
+	//CmdChamaRotina → "(" RegexExp ")" ";" [43]
+	public void CmdChamaRotina(){
+
+	}
+
+	//RegexExp → Expressao RegexExpLinha [44] | ε [45]
+	public void RegexExp(){
+
+	}
+
+	//RegexExpLinha → , Expressao RegexExpLinha [46] | ε [47]
+	public void RegexExpLinha(){
+
+	}
+
+	//CmdEscreva → "escreva" "(" Expressao ")" ";" [48]
+	public void CmdEscreva(){
+
+	}
+
+	//CmdLeia → "leia" "(" ID ")" ";" [49]
+	public void CmdLeia(){
+
+	}
+
+	//Expressao → Exp1 Exp’ [50]
+	public void Expressao(){
+
+	}
+
+	//
+
+
+//----------------------------------------------------------------------------------------------------------
+
+// CLASSES JAVINHA
+
+//----------------------------------------------------------------------------------------------------------
    // Programa --> Classe
-   public void Programa() {
+
+	/*   public void Programa() {
    	//System.out.println("[DEBUG] Programa()");
     	
       // OBS.: vimos que para o Nao-Terminal Inicial, eh melhor chamar o metodo skip()
@@ -87,23 +247,23 @@ public class Parser {
    public void Classe() {
 		//System.out.println("[DEBUG] Classe()");
 		
-      /* OBS.: vimos que para o primeiro, eh melhor chamar o metodo skip()
+      *//* OBS.: vimos que para o primeiro, eh melhor chamar o metodo skip()
       * para nao prejudicar a leitura no restante do codigo.
       * Se percebermos na TP, 'Programa' e 'Classe' possuem os mesmos
       * FIRST e FOLLOW. Entao a regra para se analisar a sincronizacao no 
       * primeiro instante em que entra nesses metodos eh a mesma.
-      */
+      *//*
 		if(!eat(Tag.KW_PUBLIC)) {
 			skip("Esperado \"public\", encontrado "  + "\"" + token.getLexema() + "\"");
       }
 
 		if(!eat(Tag.KW_CLASS)) { // espera "class"
 			
-         /* ATENCAO: no caso 'terminal esperado' vs 'terminal na entrada', de acordo com vimos em sala:
+         *//* ATENCAO: no caso 'terminal esperado' vs 'terminal na entrada', de acordo com vimos em sala:
 			// o terminal esperado não casou com o terminal da entrada,
 			// dai vamos simular o 'desempilha terminal',
 			// isto eh, continue a varredura, mantendo a entrada.
-			*/
+			*//*
       	erroSintatico("Esperado \"class\", encontrado "  + "\"" + token.getLexema() + "\"");
       }
       	
@@ -128,7 +288,8 @@ public class Parser {
       	
         	TipoPrimitivo();
         	
-        	if(!eat(Tag.ID)) erroSintatico("Esperado \"ID\", encontrado " + "\"" + token.getLexema() + "\"");
+        	if(!eat(Tag.ID))
+        		erroSintatico("Esperado \"ID\", encontrado " + "\"" + token.getLexema() + "\"");
         	if(!eat(Tag.SMB_SEMICOLON)) erroSintatico("Esperado \";\", encontrado "  + "\"" + token.getLexema() + "\"");
         	
         	ListaDeclaraVar();
@@ -138,12 +299,12 @@ public class Parser {
 			return;		      
       }
       else {
-         /* Percebemos na TP que o unico metodo a ser chamado no caso de erro, seria o skip(). 
+         *//* Percebemos na TP que o unico metodo a ser chamado no caso de erro, seria o skip().
          * Mas a ideia do skip() eh avancar a entrada sem retirar ListaDeclaraVar() da pilha
          * (recursiva). So que chegamos ao fim do metodo ListaDeclaraVar(). Como podemos
          * mante-lo na pilha recursiva? 
          * Simples, chamamos skip() e o proprio metodo ListaDeclaraVar().
-         */
+         *//*
          
       	skip("Esperado \"Integer, Double, String, end, SystemOutDispln, ID\", encontrado " + "\"" + token.getLexema() + "\"");
          if(token.getClasse() != Tag.EOF) ListaDeclaraVar();
@@ -396,5 +557,5 @@ public class Parser {
             if(token.getClasse() != Tag.EOF) Expressao3();
          }
 		}
-	}
+	}*/
 }
