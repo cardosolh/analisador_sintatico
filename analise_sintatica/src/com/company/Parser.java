@@ -30,7 +30,7 @@ public class Parser {
    public Parser(Lexer lexer) {
       this.lexer = lexer;
       token = lexer.getToken(); // Leitura inicial obrigatoria do primeiro simbolo
-      //System.out.println("[DEBUG]" + token.toString());
+      System.out.println("[DEBUG]" + token.toString());
    }
 
    // Fecha os arquivos de entrada e de tokens
@@ -46,7 +46,7 @@ public class Parser {
     
    public void advance() {
    	token = lexer.getToken();
-   	//System.out.println("[DEBUG]" + token.toString());
+   	System.out.println("[DEBUG]" + token.toString());
    }
     
 	public void skip(String mensagem) {
@@ -74,6 +74,11 @@ public class Parser {
 
     //Compilador →Programa $ [1]
 	public void Compilador(){
+        System.out.println("[DEBUG] Compilador()");
+	    if(token.getClasse() != Tag.KW_ALGORITMO) // FISRT(Programa)
+            skip("Esperado \"algoritmo\", encontrado " + "\"" + token.getLexema() + "\"");
+        System.out.println("[DEBUG] Compilador()");
+        Programa();
 
 	}
 
@@ -290,36 +295,36 @@ public class Parser {
 
 	/*   public void Programa() {
    	//System.out.println("[DEBUG] Programa()");
-    	
+
       // OBS.: vimos que para o Nao-Terminal Inicial, eh melhor chamar o metodo skip()
       // para nao prejudicar a leitura no restante do codigo.
-    	if(token.getClasse() != Tag.KW_PUBLIC) // FISRT(Programa)
+    	if(token.getClasse() != Tag.KW_ALGORITMO) // FISRT(Programa)
 			skip("Esperado \"public\", encontrado " + "\"" + token.getLexema() + "\"");
 
       Classe();
-   }
+   }*/
 
    // Classe --> "public" "class" ID ListaDeclaraVar ListaCmd "end"
-   public void Classe() {
+   /*public void Classe() {
 		//System.out.println("[DEBUG] Classe()");
 		
-      *//* OBS.: vimos que para o primeiro, eh melhor chamar o metodo skip()
+       OBS.: vimos que para o primeiro, eh melhor chamar o metodo skip()
       * para nao prejudicar a leitura no restante do codigo.
       * Se percebermos na TP, 'Programa' e 'Classe' possuem os mesmos
       * FIRST e FOLLOW. Entao a regra para se analisar a sincronizacao no 
       * primeiro instante em que entra nesses metodos eh a mesma.
-      *//*
+
 		if(!eat(Tag.KW_PUBLIC)) {
 			skip("Esperado \"public\", encontrado "  + "\"" + token.getLexema() + "\"");
       }
 
 		if(!eat(Tag.KW_CLASS)) { // espera "class"
 			
-         *//* ATENCAO: no caso 'terminal esperado' vs 'terminal na entrada', de acordo com vimos em sala:
+          ATENCAO: no caso 'terminal esperado' vs 'terminal na entrada', de acordo com vimos em sala:
 			// o terminal esperado não casou com o terminal da entrada,
 			// dai vamos simular o 'desempilha terminal',
 			// isto eh, continue a varredura, mantendo a entrada.
-			*//*
+
       	erroSintatico("Esperado \"class\", encontrado "  + "\"" + token.getLexema() + "\"");
       }
       	
@@ -333,7 +338,7 @@ public class Parser {
       if(!eat(Tag.KW_END)) { // espera "end"
       	erroSintatico("Esperado \"end\", encontrado "  + "\"" + token.getLexema() + "\"");
      	}
-	}
+	}*//*
     
     //ListaDeclaraVar --> TipoPrimitivo ID ";" ListaDeclaraVar | epsilon
     public void ListaDeclaraVar() {

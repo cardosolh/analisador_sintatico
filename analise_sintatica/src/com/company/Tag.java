@@ -39,5 +39,7 @@ public enum Tag {
     LITERAL,
 
     // palavra reservada
+    KW_ALGORITMO,
+    KW_ATE,
     KW;
 }

@@ -5,11 +5,11 @@ public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
 
-        Lexer lexer = new Lexer("testeJavinha.jvn");
+        Lexer lexer = new Lexer("primeiro_portugolo.ptgl");
         Parser parser = new Parser(lexer);
 
         // primeiro procedimento do Javinha: Programa()
-        parser.Programa();
+        parser.Compilador();
 
         parser.fechaArquivos();
 
