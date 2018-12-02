@@ -84,12 +84,71 @@ public class Parser {
 
 	//Programa → "algoritmo" RegexDeclVar ListaCmd "fim" "algoritmo" ListaRotina [2]
 	public void Programa() {
+    System.out.println("[DEBUG] Programa()");
 
+        /*OBS.: vimos que para o primeiro, eh melhor chamar o metodo skip()
+                * para nao prejudicar a leitura no restante do codigo.
+                * Se percebermos na TP, 'Programa' e 'Classe' possuem os mesmos
+                * FIRST e FOLLOW. Entao a regra para se analisar a sincronizacao no
+                * primeiro instante em que entra nesses metodos eh a mesma.*/
+
+        if(!eat(Tag.KW_ALGORITMO)) {
+            skip("Esperado \"algoritmo\", encontrado "  + "\"" + token.getLexema() + "\"");
+        }
+
+        RegexDeclVar();
+        ListaCmd();
+
+        if(!eat(Tag.KW_FIM)) { // espera "fim"
+
+            /*ATENCAO: no caso 'terminal esperado' vs 'terminal na entrada', de acordo com vimos em sala:
+            // o terminal esperado não casou com o terminal da entrada,
+            // dai vamos simular o 'desempilha terminal',
+            // isto eh, continue a varredura, mantendo a entrada.*/
+
+            erroSintatico("Esperado \"fim\", encontrado "  + "\"" + token.getLexema() + "\"");
+        }
+
+        if(!eat(Tag.KW_ALGORITMO)) {
+            skip("Esperado \"algoritmo\", encontrado "  + "\"" + token.getLexema() + "\"");
+        }
+
+       ListaRotina();
 	}
 
-	//RegexDeclVar → “declare” Tipo ListaID";" DeclaraVar  [3] | ε [4]
+    //RegexDeclVar → “declare” Tipo ListaID";" DeclaraVar  [3] | ε [4]
 	public void RegexDeclVar() {
 
+        System.out.println("[DEBUG] RegexDeclVar()");
+        //RegexDeclVar → “declare” Tipo ListaID";" DeclaraVar  [3]
+        if(!eat(Tag.KW_DECLARE)) {
+
+            Tipo();
+            ListaID();
+
+            if(!eat(Tag.SMB_SEMICOLON))
+                erroSintatico("Esperado \";\", encontrado "  + "\"" + token.getLexema() + "\"");
+
+            DeclaraVar();
+        }
+        //RegexDeclVar → ε [4]
+        else if(token.getClasse() == Tag.KW_FIM || token.getClasse() == Tag.ID ||
+                token.getClasse() == Tag.KW_RETORNE || token.getClasse() == Tag.KW_SE ||
+                token.getClasse() == Tag.KW_PARA || token.getClasse() == Tag.KW_REPITA ||
+                token.getClasse() == Tag.KW_ESCREVA || token.getClasse() == Tag.KW_LEIA) {
+            return;
+        }
+        else {
+         /* Percebemos na TP que o unico metodo a ser chamado no caso de erro, seria o skip().
+         * Mas a ideia do skip() eh avancar a entrada sem retirar ListaDeclaraVar() da pilha
+         * (recursiva). So que chegamos ao fim do metodo ListaDeclaraVar(). Como podemos
+         * mante-lo na pilha recursiva?
+         * Simples, chamamos skip() e o proprio metodo ListaDeclaraVar().
+                    */
+
+                    skip("Esperado \"Integer, Double, String, end, SystemOutDispln, ID\", encontrado " + "\"" + token.getLexema() + "\"");
+            if(token.getClasse() != Tag.EOF) RegexDeclVar();
+        }
 	}
 
 	//DeclaraVar → Tipo ListaID ";" DeclaraVar  [5] | ε [6]
