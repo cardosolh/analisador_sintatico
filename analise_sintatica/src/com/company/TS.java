@@ -1,61 +1,114 @@
-package com.company;
+package lexer;
 
 import java.util.HashMap;
-import java.util.Map;
 
-/**
- *
- * @author gustavo
- */
 public class TS {
-    
-    private HashMap<String, Token> tabelaSimbolos; // Tabela de símbolos do ambiente
+
+    private HashMap<Token, InfIdentificador> tabelaSimbolos; // Tabela de símbolos do ambiente
 
     public TS() {
         tabelaSimbolos = new HashMap();
 
         // Inserindo as palavras reservadas
         Token word;
-        word = new Token(Tag.KW_PUBLIC, "public", 0, 0);
-        this.tabelaSimbolos.put("public", word);
-        
-        word = new Token(Tag.KW_CLASS, "class", 0, 0);
-        this.tabelaSimbolos.put("class", word);
-        
-        word = new Token(Tag.KW_SYSTEMOUTDISPLN, "SystemOutDispln", 0, 0);
-        this.tabelaSimbolos.put("SystemOutDispln", word);
-        
-        word = new Token(Tag.KW_END, "end", 0, 0);
-        this.tabelaSimbolos.put("end", word);
-        
-        word = new Token(Tag.KW_INTEGER, "integer", 0, 0);
-        this.tabelaSimbolos.put("integer", word);
+        word = new Token(Tag.KW, "algoritmo", 0, 0);
+        this.tabelaSimbolos.put(word, new InfIdentificador());
 
-        word = new Token(Tag.KW_DOUBLE, "double", 0, 0);
-        this.tabelaSimbolos.put("double", word);
-        
-        word = new Token(Tag.KW_STRING, "string", 0, 0);
-        this.tabelaSimbolos.put("string", word);
-    }
-    
-    public void put(String s, Token w) {
-        tabelaSimbolos.put(s, w);
+        word = new Token(Tag.KW, "ate", 0, 0);
+        this.tabelaSimbolos.put(word, new InfIdentificador());
+
+        word = new Token(Tag.KW, "declare", 0, 0);
+        this.tabelaSimbolos.put(word, new InfIdentificador());
+
+        word = new Token(Tag.KW, "e", 0, 0);
+        this.tabelaSimbolos.put(word, new InfIdentificador());
+
+        word = new Token(Tag.KW, "enquanto", 0, 0);
+        this.tabelaSimbolos.put(word, new InfIdentificador());
+
+        word = new Token(Tag.KW, "escreva", 0, 0);
+        this.tabelaSimbolos.put(word, new InfIdentificador());
+
+        word = new Token(Tag.KW, "faca", 0, 0);
+        this.tabelaSimbolos.put(word, new InfIdentificador());
+
+        word = new Token(Tag.KW, "falso", 0, 0);
+        this.tabelaSimbolos.put(word, new InfIdentificador());
+
+        word = new Token(Tag.KW, "fim", 0, 0);
+        this.tabelaSimbolos.put(word, new InfIdentificador());
+
+        word = new Token(Tag.KW, "inicio", 0, 0);
+        this.tabelaSimbolos.put(word, new InfIdentificador());
+
+        word = new Token(Tag.KW, "leia", 0, 0);
+        this.tabelaSimbolos.put(word, new InfIdentificador());
+
+        word = new Token(Tag.KW, "literal", 0, 0);
+        this.tabelaSimbolos.put(word, new InfIdentificador());
+
+        word = new Token(Tag.KW, "logico", 0, 0);
+        this.tabelaSimbolos.put(word, new InfIdentificador());
+
+        word = new Token(Tag.KW, "nulo", 0, 0);
+        this.tabelaSimbolos.put(word, new InfIdentificador());
+
+        word = new Token(Tag.KW, "numerico", 0, 0);
+        this.tabelaSimbolos.put(word, new InfIdentificador());
+
+        word = new Token(Tag.KW, "ou", 0, 0);
+        this.tabelaSimbolos.put(word, new InfIdentificador());
+
+        word = new Token(Tag.KW, "repita", 0, 0);
+        this.tabelaSimbolos.put(word, new InfIdentificador());
+
+        word = new Token(Tag.KW, "para", 0, 0);
+        this.tabelaSimbolos.put(word, new InfIdentificador());
+
+        word = new Token(Tag.KW, "retorne", 0, 0);
+        this.tabelaSimbolos.put(word, new InfIdentificador());
+
+        word = new Token(Tag.KW, "se", 0, 0);
+        this.tabelaSimbolos.put(word, new InfIdentificador());
+
+        word = new Token(Tag.KW, "senao", 0, 0);
+        this.tabelaSimbolos.put(word, new InfIdentificador());
+
+        word = new Token(Tag.KW, "subrotina", 0, 0);
+        this.tabelaSimbolos.put(word, new InfIdentificador());
+
+        word = new Token(Tag.KW, "verdadeiro", 0, 0);
+        this.tabelaSimbolos.put(word, new InfIdentificador());
+
     }
 
-    // Pesquisa na tabela de símbolos se há algum token com determinado lexema
+    public void put(Token w, InfIdentificador i) {
+        tabelaSimbolos.put(w, i);
+    }
+
+    // Retorna um identificador de um determinado token
+    public InfIdentificador getIdentificador(Token w) {
+        InfIdentificador infoIdentificador = (InfIdentificador) tabelaSimbolos.get(w);
+        return infoIdentificador;
+    }
+
+    // Pesquisa na tabela de símbolos se há algum tokem com determinado lexema
     // vamos usar esse metodo somente para diferenciar ID e KW
     public Token retornaToken(String lexema) {
-		  Token token = tabelaSimbolos.get(lexema); 
-		  return token;   	
+        for (Token token : tabelaSimbolos.keySet()) {
+            if (token.getLexema().equals(lexema.toLowerCase())) {
+                return token;
+            }
+        }
+        return null;
     }
-    
+
     @Override
     public String toString() {
         String saida = "";
         int i = 1;
-        
-        for(Map.Entry<String, Token> entry : tabelaSimbolos.entrySet()) {
-            saida += ("posicao " + i + ": \t" + entry.getValue().toString()) + "\n";
+        for (Token token : tabelaSimbolos.keySet()) {
+            saida += ("posicao " + i + ": \t" + token.toString()) + "\n";
             i++;
         }
         return saida;
