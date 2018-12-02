@@ -1,9 +1,5 @@
-package com.company;
+package lexer;
 
-/**
- *
- * @author gustavo
- */
 public enum Tag {
     
     // fim de arquivo
@@ -26,23 +22,18 @@ public enum Tag {
     SMB_OP,
     SMB_CP,
     SMB_SEMICOLON,
+    SMB_COMMA,
+    SMB_COLON,
     
     //identificador
     ID,
     
     //numeros
-    INTEGER,
-    DOUBLE,
+    NUMERICO,
     
     //strings
-    STRING,
+    LITERAL,
     
     // palavra reservada
-    KW_PUBLIC,
-    KW_CLASS,
-    KW_END,
-    KW_INTEGER,
-    KW_DOUBLE,
-    KW_STRING,
-    KW_SYSTEMOUTDISPLN;
+    KW;
 }
