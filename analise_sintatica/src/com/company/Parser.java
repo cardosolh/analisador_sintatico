@@ -137,7 +137,8 @@ public class Parser {
 
 	}
 
-	//Tipo → "logico" [20] | "numerico" [21] | "literal" [22] | "nulo" [23]
+	//Tipo → 	"logico" [20] | "numerico" [21] |
+	// 			"literal" [22] | "nulo" [23]
 	public void Tipo() {
 
 	}
@@ -151,8 +152,10 @@ public class Parser {
 	public void ListaCmdLinha(){
 
 	}
-	//Cmd → CmdSe [27] | CmdEnquanto [28] | CmdPara [29] | CmdRepita [30] |
-	//		ID Cmdlinha [31] | CmdEscreva [32] | CmdLeia [33]
+	//Cmd →	CmdSe [27] | CmdEnquanto [28] |
+	// 		CmdPara [29] | CmdRepita [30] |
+	//		ID Cmdlinha [31] | CmdEscreva [32] |
+	//		CmdLeia [33]
 	public void Cmd() {
 
 	}
@@ -217,12 +220,65 @@ public class Parser {
 
 	}
 
-	//Expressao → Exp1 Exp’ [50]
+	//Expressao → Exp1 ExpLinha [50]
 	public void Expressao(){
 
 	}
 
-	//
+	//ExpLinha →	< Exp1 ExpLinha [51] | <= Exp1 ExpLinha [52] |
+	// 				> Exp1 ExpLinha [53] | >= Exp1 ExpLinha [54] |
+	//		 		= Exp1 ExpLinha [55] | <> Exp1 ExpLinha [56] | ε [57]
+	public void ExpLinha(){
+
+	}
+
+	//Exp1 → Exp2 Exp1Linha [58]
+	public void Exp1(){
+
+	}
+
+	//Exp1Linha → E Exp2 Exp1Linha [59] | Ou Exp2 Exp1Linha [60]| ε [61]
+	public void Exp1Linha(){
+
+	}
+
+	//Exp2 → Exp3 Exp2Linha [62]
+	public void Exp2(){
+
+	}
+
+	//Exp2Linha → + Exp3 Exp2Linha [63] | - Exp3 Exp2Linha [64] | ε [65]
+	public void Expt2Linha(){
+
+	}
+
+	//Exp3 → Exp4 Exp3Linha [66]
+	public void Exp3(){
+
+	}
+	
+	//Exp3Linha →* Exp4 Exp3Linha [67] | / Exp4 Exp3Linha [68] | ε [69]
+	public void Exp3Linha(){
+
+	}
+
+	//Exp4 → 	id Exp4Linha [70] | Numerico [71] |
+	// 			Litetal [72] | “verdadeiro” [73] |
+	// 			“falso” [74] | OpUnario Expressao [75]|
+	// 			“(“ Expressao “)” [76]
+	public void Exp4(){
+
+	}
+
+	//Exp4Linha → “(“ RegexExp ”)” [77] | ε [78]
+	public void Exp4Linha(){
+
+	}
+
+	//OpUnario → "Nao" [79]
+	public void OpUnario(){
+
+	}
 
 
 //----------------------------------------------------------------------------------------------------------
