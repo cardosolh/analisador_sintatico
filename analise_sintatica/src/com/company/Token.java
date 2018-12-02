@@ -1,4 +1,4 @@
-package lexer;
+package com.company;
 
 public class Token {
     

@@ -5,10 +5,10 @@ package com.company;
  * @author gustavo
  */
 public enum Tag {
-    
+
     // fim de arquivo
     EOF,
-    
+
     //Operadores
     RELOP_LT,
     RELOP_LE,
@@ -21,28 +21,23 @@ public enum Tag {
     RELOP_MINUS,
     RELOP_MULT,
     RELOP_DIV,
-    
+
     //Simbolos
     SMB_OP,
     SMB_CP,
     SMB_SEMICOLON,
-    
+    SMB_COMMA,
+    SMB_COLON,
+
     //identificador
     ID,
-    
+
     //numeros
-    INTEGER,
-    DOUBLE,
-    
+    NUMERICO,
+
     //strings
-    STRING,
-    
+    LITERAL,
+
     // palavra reservada
-    KW_PUBLIC,
-    KW_CLASS,
-    KW_END,
-    KW_INTEGER,
-    KW_DOUBLE,
-    KW_STRING,
-    KW_SYSTEMOUTDISPLN;
+    KW;
 }
