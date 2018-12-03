@@ -121,13 +121,11 @@ public class Parser {
 
         System.out.println("[DEBUG] RegexDeclVar()");
         //RegexDeclVar → “declare” Tipo ListaID";" DeclaraVar  [3]
-        if(!eat(Tag.KW_DECLARE)) {
+        if(token.getClasse()== Tag.KW_DECLARE) {
 
-            Tipo();
-            ListaID();
-
-            if(!eat(Tag.SMB_SEMICOLON))
-                erroSintatico("Esperado \";\", encontrado "  + "\"" + token.getLexema() + "\"");
+			if(!eat(Tag.KW_DECLARE)) {
+				skip("Esperado \"declare\", encontrado "  + "\"" + token.getLexema() + "\"");
+			}
 
             DeclaraVar();
         }
@@ -153,21 +151,66 @@ public class Parser {
 
 	//DeclaraVar → Tipo ListaID ";" DeclaraVar  [5] | ε [6]
 	public void DeclaraVar() {
+		System.out.println("[DEBUG] DeclaraVar()");
+		//DeclaraVar → Tipo ListaID ";" DeclaraVar  [5]
+        if( token.getClasse() != Tag.KW_LOGICO || token.getClasse() != Tag.KW_NUMERICO ||
+            token.getClasse() != Tag.KW_LITERAL || token.getClasse() != Tag.KW_NULO) { // FIRST(Tipo)
+            Tipo();
+            ListaID();
+			if(!eat(Tag.SMB_SEMICOLON)) {
+				skip("Esperado \";\", encontrado "  + "\"" + token.getLexema() + "\"");
+			}
+            DeclaraVar();
+        }
+        //DeclaraVar → ε [6]
+        else if(token.getClasse() == Tag.KW_FIM || token.getClasse() == Tag.ID ||
+                token.getClasse() == Tag.KW_RETORNE || token.getClasse() == Tag.KW_SE ||
+                token.getClasse() == Tag.KW_PARA || token.getClasse() == Tag.KW_REPITA ||
+                token.getClasse() == Tag.KW_ESCREVA || token.getClasse() == Tag.KW_LEIA) {
+            return;
+        }
+        else {
+            /* Percebemos na TP que o unico metodo a ser chamado no caso de erro, seria o skip().
+             * Mas a ideia do skip() eh avancar a entrada sem retirar ListaDeclaraVar() da pilha
+             * (recursiva). So que chegamos ao fim do metodo ListaDeclaraVar(). Como podemos
+             * mante-lo na pilha recursiva?
+             * Simples, chamamos skip() e o proprio metodo ListaDeclaraVar().
+             */
 
+            skip("Esperado \"Integer, Double, String, end, SystemOutDispln, ID\", encontrado " + "\"" + token.getLexema() + "\"");
+            if(token.getClasse() != Tag.EOF) DeclaraVar();
+        }
 	}
 
 	//ListaRotina → ListaRotinaLinha [7]
 	public void ListaRotina() {
+		System.out.println("[DEBUG] ListaRotina()");
+		if(token.getClasse() != Tag.KW_SUBROTINA || token.getClasse() != Tag.EOF) // FISRT(ListaRotinaLinha)
+			ListaRotinaLinha();
+
 
 	}
 
 	//ListaRotinaLinha → Rotina ListaRotinaLinha [8] | ε [9]
 	public void ListaRotinaLinha() {
+		System.out.println("[DEBUG] ListaRotinaLinha()");
+		//ListaRotinaLinha → Rotina ListaRotinaLinha [8]
+		if(token.getClasse() == Tag.KW_SUBROTINA){ // FIRST(Rotina)
+
+			Rotina();
+			ListaRotinaLinha();
+		}
+		//ListaRotinaLinha → ε [9]
+		else if(token.getClasse() == Tag.EOF)
+			if(!eat(Tag.EOF)) {
+				skip("Esperado \"EOF\", encontrado "  + "\"" + token.getLexema() + "\"");
+			}
 
 	}
 
 	//Rotina → "subrotina" ID "(" ListaParam ")" RegexDeclVar ListaCmd Retorno "fim" "subrotina" [10]
 	public void Rotina() {
+
 
 	}
 
@@ -189,10 +232,41 @@ public class Parser {
 	//ListaID → ID ListaIDLinha [15]
 	public void ListaID () {
 
+		if(!eat(Tag.ID)) {
+			skip("Esperado \"ID\", encontrado "  + "\"" + token.getLexema() + "\"");
+		}
+		ListaIDLinha();
 	}
 
 	//ListaIDLinha → "," ListaID [16] | ε [17]
 	public void  ListaIDLinha(){
+		System.out.println("[DEBUG] ListaIDLinha()");
+
+		//ListaIDLinha → "," ListaID [16]
+		if(token.getClasse() == Tag.SMB_COMMA) {
+
+			if(!eat(Tag.SMB_COMMA))
+				erroSintatico("Esperado \"-- , --\", encontrado " + "\"" + token.getLexema() + "\"");
+
+		}
+		//ListaIDLinha → ε [17]
+		else if(token.getClasse() == Tag.SMB_SEMICOLON || token.getClasse() == Tag.KW_LOGICO ||
+				token.getClasse() == Tag.NUMERICO || token.getClasse() == Tag.LITERAL ||
+				token.getClasse() == Tag.KW_NULO) {
+			return;
+		}
+		else {
+         /* Percebemos na TP que o unico metodo a ser chamado no caso de erro, seria o skip().
+         * Mas a ideia do skip() eh avancar a entrada sem retirar ListaDeclaraVar() da pilha
+         * (recursiva). So que chegamos ao fim do metodo ListaDeclaraVar(). Como podemos
+					* mante-lo na pilha recursiva?
+         * Simples, chamamos skip() e o proprio metodo ListaDeclaraVar().
+					*/
+
+					skip("Esperado \"Integer, Double, String, end, SystemOutDispln, ID\", encontrado " + "\"" + token.getLexema() + "\"");
+			if(token.getClasse() != Tag.EOF) ListaIDLinha();
+		}
+
 
 	}
 
@@ -204,7 +278,23 @@ public class Parser {
 	//Tipo → 	"logico" [20] | "numerico" [21] |
 	// 			"literal" [22] | "nulo" [23]
 	public void Tipo() {
+		System.out.println("[DEBUG] Tipo()");
 
+		if(	!eat(Tag.KW_LOGICO) && !eat(Tag.KW_NUMERICO) &&
+			!eat(Tag.KW_LITERAL) && !eat(Tag.KW_NULO)) {
+
+			// synch: FOLLOW(Tipo)
+			if(token.getClasse() == Tag.ID || token.getClasse() == Tag.SMB_COMMA ||
+					token.getClasse() == Tag.SMB_CP) {
+
+				erroSintatico("Esperado \"ID, --,-- , )\", encontrado "  + "\"" + token.getLexema() + "\"");
+				return;
+			}
+			else {
+				skip("Esperado \"Esperado \"ID, --,-- , )\", encontrado  "  + "\"" + token.getLexema() + "\"");
+				if(token.getClasse() != Tag.EOF) Tipo();
+			}
+		}
 	}
 
 	//ListaCmd → ListaCmdLinha [24]
