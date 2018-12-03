@@ -171,13 +171,6 @@ public class Parser {
             return;
         }
         else {
-            /* Percebemos na TP que o unico metodo a ser chamado no caso de erro, seria o skip().
-             * Mas a ideia do skip() eh avancar a entrada sem retirar ListaDeclaraVar() da pilha
-             * (recursiva). So que chegamos ao fim do metodo ListaDeclaraVar(). Como podemos
-             * mante-lo na pilha recursiva?
-             * Simples, chamamos skip() e o proprio metodo ListaDeclaraVar().
-             */
-
             skip("Esperado \"fim, ID, retorne, se, enquanto, para, repita, escreva, leia\", encontrado " + "\"" + token.getLexema() + "\"");
             if(token.getClasse() != Tag.EOF) DeclaraVar();
         }
@@ -188,7 +181,6 @@ public class Parser {
 		System.out.println("[DEBUG] ListaRotina()");
 		if(token.getClasse() != Tag.KW_SUBROTINA || token.getClasse() != Tag.EOF) // FISRT(ListaRotinaLinha)
 			ListaRotinaLinha();
-
 
 	}
 
@@ -237,11 +229,26 @@ public class Parser {
 
 	//ListaParam → Param ListaParamLinha [11]
 	public void ListaParam() {
+        System.out.println("[DEBUG] ListaParam()");
+        if(token.getClasse() != Tag.ID){ // FISRT(Param)
+            Param();
+            ListaParamLinha();
+	    }
 
 	}
 
 	//ListaParamLinha → "," ListaParam [12] | ε [13]
 	public void ListaParamLinha() {
+	    if(eat(Tag.SMB_COMMA))
+	        ListaParam();
+	    else if(token.getClasse() == Tag.SMB_CP)
+            if(!eat(Tag.EOF)) {
+                skip("Esperado \")\", encontrado "  + "\"" + token.getLexema() + "\"");
+            }
+	    else{
+                skip("Esperado \"--,--, )\", encontrado "  + "\"" + token.getLexema() + "\"");
+                if(token.getClasse() != Tag.EOF) ListaParamLinha();
+            }
 
 	}
 
@@ -369,6 +376,23 @@ public class Parser {
 
 	//ListaCmdLinha → Cmd ListaCmdLinha [25] | ε [26]
 	public void ListaCmdLinha(){
+        System.out.println("[DEBUG] ListaCmdLinha()");
+        //ListaCmdLinha → Cmd ListaCmdLinha [25]
+        if( token.getClasse() == Tag.ID || token.getClasse() == Tag.KW_SE ||
+            token.getClasse() == Tag.KW_ENQUANTO || token.getClasse() == Tag.KW_PARA ||
+            token.getClasse() == Tag.KW_REPITA ||
+            token.getClasse() == Tag.KW_ESCREVA || token.getClasse() == Tag.KW_LEIA){
+            Cmd();
+            ListaCmdLinha();
+
+        }//ListaCmdLinha → ε [26]
+        else if( token.getClasse() == Tag.KW_FIM || token.getClasse() == Tag.KW_RETORNE ||
+                token.getClasse() == Tag.KW_ENQUANTO || token.getClasse() == Tag.KW_ATE)
+            return;
+        else {
+            skip("Esperado \"ID, se, enquanto, para, repita, escreva, leia, fim, retorne, enquanto, ate\", encontrado " + "\"" + token.getLexema() + "\"");
+            if(token.getClasse() != Tag.EOF) ListaCmdLinha();
+        }
 
 	}
 	//Cmd →	CmdSe [27] | CmdEnquanto [28] |
@@ -376,6 +400,27 @@ public class Parser {
 	//		ID Cmdlinha [31] | CmdEscreva [32] |
 	//		CmdLeia [33]
 	public void Cmd() {
+        //Cmd →	CmdSe [27]
+        if(token.getClasse()==Tag.KW_SE)
+            CmdSe();
+        //Cmd →	CmdEnquanto [28]
+        else if(token.getClasse()==Tag.KW_ENQUANTO)
+            CmdEnquanto();
+        //Cmd → CmdPara [29]
+        else if(token.getClasse()==Tag.KW_SE)
+            CmdSe();
+        //Cmd →	CmdRepita [30]
+        else if(token.getClasse()==Tag.KW_REPITA)
+            CmdRepita();
+        //Cmd →	Cmdlinha [31]
+        else if(token.getClasse()==Tag.ID)
+            CmdLinha();
+        //Cmd →	CmdEscreva [32]
+        else if(token.getClasse()==Tag.KW_ESCREVA)
+            CmdEscreva();
+        //Cmd →	CmdLeia [33]
+        else if(token.getClasse()==Tag.KW_LEIA)
+            CmdLeia();
 
 	}
 
