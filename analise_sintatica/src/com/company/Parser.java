@@ -336,48 +336,136 @@ public class Parser {
 
 	//CmdPara → "para" ID CmdAtrib "ate" Expressao "faca" "inicio" ListaCmd "fim" [40]
 	public void CmdPara() {
+		if(eat(Tag.KW_PARA)){
+		   CmdAtrib();
+		}else{                
+			if (token.getClasse() == Tag.ID || token.getClasse() == Tag.KW_PARA) {
+				erroSintatico("Esperado \"KW\", encontrado " + "\"" + token.getLexema() + "\"");
 
-	}
+			} else {
+				skip("Esperado \"KW\", encontrado " + "\"" + token.getLexema() + "\"");
+				if (token.getClasse() != Tag.EOF) {
+					ListaCmd();
+				}
+			}
+		}
+}
 
-	//CmdRepita → "repita" ListaCmd "ate" Expressao [41]
-	public void CmdRepita(){
+//CmdRepita → "repita" ListaCmd "ate" Expressao [41]
+public void CmdRepita(){
+		if(eat(Tag.KW_REPITA)){
+			Expressao();
+		}else{
+			if (token.getClasse() == Tag.KW_ATE || token.getClasse() == Tag.KW_REPITA) {
+				erroSintatico("Esperado \"KW\", encontrado " + "\"" + token.getLexema() + "\"");
 
-	}
+			} else {
+				skip("Esperado \"KW\", encontrado " + "\"" + token.getLexema() + "\"");
+				if (token.getClasse() != Tag.EOF) {
+					ListaCmd();
+				}
+			}
+		}
+}
 
-	//CmdAtrib → "<--" Expressao ";" [42]
-	public void CmdAtrib() {
+//CmdAtrib → "<--" Expressao ";" [42]
+public void CmdAtrib() {
+		
+}
 
-	}
+//CmdChamaRotina → "(" RegexExp ")" ";" [43]
+public void CmdChamaRotina(){
+		if(eat(Tag.SMB_OP)){
+			Expressao();
+		}else{
+			if (token.getClasse() == Tag.SMB_OP) {
+				erroSintatico("Esperado \"KW\", encontrado " + "\"" + token.getLexema() + "\"");
 
-	//CmdChamaRotina → "(" RegexExp ")" ";" [43]
-	public void CmdChamaRotina(){
+			} else {
+				skip("Esperado \"KW\", encontrado " + "\"" + token.getLexema() + "\"");
+				if (token.getClasse() != Tag.EOF) {
+					ListaCmd();
+				}
+			}
+		}
+}
 
-	}
+//RegexExp → Expressao RegexExpLinha [44] | ε [45]
+public void RegexExp(){
+		if(eat(Tag.KW_E)){
+			RegexExpLinha();
+		}else{
+		   
+			skip("Esperado \"KW\", encontrado " + "\"" + token.getLexema() + "\"");
+			if (token.getClasse() != Tag.EOF) {
+				ListaCmd();
+			}
 
-	//RegexExp → Expressao RegexExpLinha [44] | ε [45]
-	public void RegexExp(){
+		}
+}
 
-	}
+//RegexExpLinha → , Expressao RegexExpLinha [46] | ε [47]
+public void RegexExpLinha(){
+		if(eat(Tag.KW_E)){
+			RegexExpLinha();
+		}else{
+		   
+			skip("Esperado \"KW\", encontrado " + "\"" + token.getLexema() + "\"");
+			if (token.getClasse() != Tag.EOF) {
+				ListaCmd();
+			}
 
-	//RegexExpLinha → , Expressao RegexExpLinha [46] | ε [47]
-	public void RegexExpLinha(){
+		}
+}
 
-	}
+//CmdEscreva → "escreva" "(" Expressao ")" ";" [48]
+public void CmdEscreva(){
+		if(eat(Tag.KW_ESCREVA)){
+			if(!eat(Tag.SMB_OP)) {
+				erroSintatico("Esperado \"(\", encontrado "  + "\"" + token.getLexema() + "\"");
+			}
+			Expressao();
+			if(!eat(Tag.SMB_CP)) {
+				erroSintatico("Esperado \")\", encontrado "  + "\"" + token.getLexema() + "\"");
+			}
+			if(!eat(Tag.SMB_SEMICOLON)) {
+				erroSintatico("Esperado \";\", encontrado "  + "\"" + token.getLexema() + "\"");
+			}	
+		} 
+		else {
+			if(token.getClasse() == Tag.KW_ESCREVA || token.getClasse() == Tag.ID || 
+				token.getClasse() == Tag.KW_FIM ) {
+				erroSintatico("Esperado \"SystemOutDispln\", encontrado "  + "\"" + token.getLexema() + "\"");                
+			}else{
+				skip("Esperado \"SystemOutDispln\", encontrado "  + "\"" + token.getLexema() + "\"");
+				if(token.getClasse() != Tag.EOF)
+					ListaCmd(); 
+				} 
+			}
+}
 
-	//CmdEscreva → "escreva" "(" Expressao ")" ";" [48]
-	public void CmdEscreva(){
+//CmdLeia → "leia" "(" ID ")" ";" [49]
+public void CmdLeia(){
+		if(eat(Tag.KW_LEIA)){
+			if(!eat(Tag.SMB_OP)) {
+				erroSintatico("Esperado \"(\", encontrado "  + "\"" + token.getLexema() + "\"");
+			}
+			Expressao();
+			if(!eat(Tag.ID)) {
+				erroSintatico("Esperado \")\", encontrado "  + "\"" + token.getLexema() + "\"");
+			}                	
+		}else{
+			skip("Esperado \"SystemOutDispln\", encontrado " + "\"" + token.getLexema() + "\"");
+			if (token.getClasse() != Tag.EOF) {
+				ListaCmd();
+			}                    
+		}
+}
 
-	}
+//Expressao → Exp1 ExpLinha [50]
+public void Expressao(){
 
-	//CmdLeia → "leia" "(" ID ")" ";" [49]
-	public void CmdLeia(){
-
-	}
-
-	//Expressao → Exp1 ExpLinha [50]
-	public void Expressao(){
-
-	}
+}
 
 	//ExpLinha →	< Exp1 ExpLinha [51] | <= Exp1 ExpLinha [52] |
 	// 				> Exp1 ExpLinha [53] | >= Exp1 ExpLinha [54] |
