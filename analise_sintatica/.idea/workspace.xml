@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b46589ae-1f08-4bd3-93ee-2c9ba251572f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/primeiro_portugolo_certo.ptgl" beforeDir="false" afterPath="$PROJECT_DIR$/primeiro_portugolo_certo.ptgl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exemplo/src/compiladores/Compiladores.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Exemplo/src/compiladores/Compiladores.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exemplo/src/compiladores/Lexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Exemplo/src/compiladores/Lexer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exemplo/src/compiladores/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Exemplo/src/compiladores/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exemplo/src/compiladores/TS.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Exemplo/src/compiladores/TS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exemplo/src/compiladores/Tag.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Exemplo/src/compiladores/Tag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exemplo/src/compiladores/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Exemplo/src/compiladores/Token.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Parser.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -17,8 +23,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/Parser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1653">
-              <caret line="486" column="28" lean-forward="true" selection-start-line="486" selection-start-column="28" selection-end-line="486" selection-end-column="28" />
+            <state relative-caret-position="260">
+              <caret line="387" column="24" lean-forward="true" selection-start-line="387" selection-start-column="24" selection-end-line="387" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -85,7 +91,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="953" />
     <option name="y" value="40" />
     <option name="width" value="974" />
@@ -126,7 +132,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543796167406" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543876018147" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
@@ -180,15 +186,15 @@
       <updated>1543759264673</updated>
       <workItem from="1543759267911" duration="702000" />
       <workItem from="1543760055481" duration="5758000" />
-      <workItem from="1543768358971" duration="22355000" />
+      <workItem from="1543768358971" duration="27233000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28815000" />
+    <option name="totallyTimeSpent" value="33693000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="953" y="40" width="974" height="1047" extended-state="0" />
+    <frame x="953" y="40" width="974" height="1047" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.21881838" />
@@ -331,8 +337,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Parser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1653">
-          <caret line="486" column="28" lean-forward="true" selection-start-line="486" selection-start-column="28" selection-end-line="486" selection-end-column="28" />
+        <state relative-caret-position="260">
+          <caret line="387" column="24" lean-forward="true" selection-start-line="387" selection-start-column="24" selection-end-line="387" selection-end-column="24" />
         </state>
       </provider>
     </entry>
