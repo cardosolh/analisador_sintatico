@@ -426,16 +426,46 @@ public class Parser {
 
 	//CmdLinha → CmdAtrib [34] | CmdChamaRotina [35]
 	public void CmdLinha() {
-
+        System.out.println("[DEBUG] CmdAtrib()");
+        //CmdLinha → CmdAtrib [34]
+        if (token.getClasse() == Tag.RELOP_ASSIGN)
+            CmdAtrib();
+        //CmdLinha → CmdChamaRotina [35]
+	    else if (token.getClasse() == Tag.SMB_OP)
+            CmdChamaRotina();
 	}
 
 	//CmdSe → "se" "(" Expressao ")" "inicio" ListaCmd "fim" CmdSeLinha [36]
 	public void CmdSe(){
+        System.out.println("[DEBUG] CmdSe()");
+	    if(eat(Tag.KW_SE)){
+            if(!eat(Tag.SMB_OP))
+                erroSintatico("Esperado \"(\", encontrado " + "\"" + token.getLexema() + "\"");
+            Expressao();
+            if(!eat(Tag.SMB_CP))
+                erroSintatico("Esperado \")\", encontrado " + "\"" + token.getLexema() + "\"");
+            if(!eat(Tag.KW_INICIO))
+                erroSintatico("Esperado \"inicio\", encontrado " + "\"" + token.getLexema() + "\"");
+            ListaCmd();
+            if(!eat(Tag.KW_FIM))
+                erroSintatico("Esperado \"fim\", encontrado " + "\"" + token.getLexema() + "\"");
+            CmdSeLinha();
+	    }
 
 	}
 
 	//CmdSeLinha → "senao" "inicio" ListaCmd "fim" [37] | ε [38]
 	public void CmdSeLinha() {
+        //CmdSeLinha → "senao" "inicio" ListaCmd "fim" [37]
+	    if(token.getClasse() == Tag.KW_SENAO){
+
+        }
+        //CmdSeLinha → ε [38]
+	    else if(    token.getClasse() == Tag.KW_FIM || token.getClasse() ==Tag.ID ||
+                    token.getClasse() == Tag.KW_RETORNE || token.getClasse() == Tag.KW_SE ||
+                    token.getClasse() == Tag.KW_ENQUANTO || token.getClasse() == Tag.KW_PARA ||
+                    token.getClasse() == Tag.KW_ATE || token.getClasse() == Tag.KW_REPITA ||
+                    token.getClasse() == Tag.KW_ESCREVA || token.getClasse() == Tag.KW_LEIA) return;
 
 	}
 
