@@ -842,14 +842,20 @@ public class Parser {
     // 			“falso” [74] | OpUnario Expressao [75]|
     // 			“(“ Expressao “)” [76]
     public void Exp4() {
+        System.out.println("[DEBUG] Exp4Linha'()");
         if (eat(Tag.KW_NUMERICO) || eat(Tag.KW_LITERAL) || eat(Tag.KW_VERDADEIRO)
-                || eat(Tag.KW_FALSO) || eat(Tag.SMB_OP)) {
-            Exp4();
+                || eat(Tag.KW_FALSO)) {     
+            return;
+        } else if(eat(Tag.ID)){
             Exp4Linha();
-        } else if (token.getClasse() == Tag.SMB_CP || token.getClasse() == Tag.SMB_SEMICOLON) {
+            
+        }else if (eat(Tag.SMB_OP)) {
+            Expressao();
+            return;
+        }else if (token.getClasse() == Tag.SMB_CP || token.getClasse() == Tag.SMB_SEMICOLON) {
             return;
         } else {
-            skip("Esperado \"Numerico, Litetal, verdadeiro, falso,  OpUnario, ), ;\", encontrado " + "\"" + token.getLexema() + "\"");
+            skip("Esperado \"ID, Numerico, Litetal, verdadeiro, falso,  OpUnario, ), ;\", encontrado " + "\"" + token.getLexema() + "\"");
             if (token.getClasse() != Tag.EOF) {
                 Exp4Linha();
             }
