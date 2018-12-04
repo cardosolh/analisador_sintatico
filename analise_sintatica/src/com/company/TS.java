@@ -17,8 +17,10 @@ public class TS {
 
         // Inserindo as palavras reservadas
         this.tabelaSimbolos.put("algoritmo",(new Token(Tag.KW_ALGORITMO,"algoritmo",0,0)));
+        word = new Token(Tag.KW_DECLARE, "declare", 0, 0);
+        this.tabelaSimbolos.put("declare", word);
         this.tabelaSimbolos.put("ate",(new Token(Tag.KW_ATE,"ate",0,0)));
-        this.tabelaSimbolos.put("declare",(new Token(Tag.KW_DECLARE,"declare",0,0)));
+        //this.tabelaSimbolos.put("declare",(new Token(Tag.KW_DECLARE,"declare",0,0)));
         this.tabelaSimbolos.put("e",(new Token(Tag.KW_E,"e",0,0)));
         this.tabelaSimbolos.put("enquanto",(new Token(Tag.KW_ENQUANTO,"enquanto",0,0)));
         this.tabelaSimbolos.put("escreva",(new Token(Tag.KW_ESCREVA,"escreva",0,0)));

@@ -239,10 +239,10 @@ public class Lexer {
                 lexema.append(c);
              } else {
                 retornaPonteiro();
-                if (tabelaSimbolos.retornaToken(lexema.toString()) == null) {
+                if (tabelaSimbolos.retornaToken(lexema.toString().toLowerCase()) == null) {
                    return new Token(Tag.ID, lexema.toString(), n_line, n_column);
                 } else {
-                   return tabelaSimbolos.retornaToken(lexema.toString());
+                   return tabelaSimbolos.retornaToken(lexema.toString().toLowerCase());
                 }
              }
              break;

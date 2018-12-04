@@ -10,14 +10,16 @@ public class Main {
 
         Parser parser = new Parser(lexer);
 
+        //Imprimir a tabela de simbolos
+        lexer.printTS();
+
         // primeiro procedimento do Javinha: Programa()
 
         parser.Compilador();
 
         parser.fechaArquivos();
 
-        //Imprimir a tabela de simbolos
-        lexer.printTS();
+
 
         System.out.println("Compilação de Programa Realizada!");
     }
