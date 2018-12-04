@@ -10,7 +10,7 @@ public class Token {
    public Token(Tag classe, String lexema, int linha, int coluna) {
 
    	this.classe = classe;
-      this.lexema = lexema;
+      this.lexema = lexema.toLowerCase();
       this.linha = linha;
       this.coluna = coluna;
    }
@@ -27,7 +27,7 @@ public class Token {
 	
    public String getLexema() {
 	
-		return lexema;
+		return lexema.toLowerCase();
    }
 	
    public void setLexema(String lexema) {

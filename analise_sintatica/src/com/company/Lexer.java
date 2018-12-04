@@ -21,6 +21,7 @@ public class Lexer {
       // Abre instance_file de input_data
       try {
          instance_file = new RandomAccessFile(input_data, "r");
+
       }
 	   catch(IOException e) {
          System.out.println("Erro de abertura do arquivo " + input_data + ": " + e);

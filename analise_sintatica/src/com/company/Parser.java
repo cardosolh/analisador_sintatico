@@ -121,11 +121,12 @@ public class Parser {
 
         System.out.println("[DEBUG] RegexDeclVar()");
         //RegexDeclVar → “declare” Tipo ListaID";" DeclaraVar  [3]
-        if(token.getClasse()== Tag.KW_DECLARE) {
-
-			if(!eat(Tag.KW_DECLARE)) {
-				skip("Esperado \"declare\", encontrado "  + "\"" + token.getLexema() + "\"");
-			}
+        if(eat(Tag.KW_DECLARE)) {
+            Tipo();
+			ListaID();
+            if(!eat(Tag.SMB_SEMICOLON)) {
+                skip("Esperado \";\", encontrado "  + "\"" + token.getLexema() + "\"");
+            }
 
             DeclaraVar();
         }
@@ -399,7 +400,9 @@ public class Parser {
 	// 		CmdPara [29] | CmdRepita [30] |
 	//		ID Cmdlinha [31] | CmdEscreva [32] |
 	//		CmdLeia [33]
+
 	public void Cmd() {
+        System.out.println("[DEBUG] ListaCmdLinha()");
         //Cmd →	CmdSe [27]
         if(token.getClasse()==Tag.KW_SE)
             CmdSe();
@@ -458,7 +461,13 @@ public class Parser {
 	public void CmdSeLinha() {
         //CmdSeLinha → "senao" "inicio" ListaCmd "fim" [37]
 	    if(token.getClasse() == Tag.KW_SENAO){
-
+	        if(!eat(Tag.KW_SENAO))
+                erroSintatico("Esperado \"senao\", encontrado " + "\"" + token.getLexema() + "\"");
+            if(!eat(Tag.KW_INICIO))
+                erroSintatico("Esperado \"inicio\", encontrado " + "\"" + token.getLexema() + "\"");
+            ListaCmd();
+            if(!eat(Tag.KW_FIM))
+                erroSintatico("Esperado \"fim\", encontrado " + "\"" + token.getLexema() + "\"");
         }
         //CmdSeLinha → ε [38]
 	    else if(    token.getClasse() == Tag.KW_FIM || token.getClasse() ==Tag.ID ||
@@ -534,20 +543,22 @@ public class Parser {
     public void CmdAtrib() {
         System.out.println("[DEBUG] CmdAtrib()");
 
-        if (eat(Tag.ID)) {
-            if (!eat(Tag.RELOP_ASSIGN)) {
-                erroSintatico("Esperado \"<--\", encontrado " + "\"" + token.getLexema() + "\"");
-            }
+
+        if (eat(Tag.RELOP_ASSIGN)) {
+
             Expressao();
             if (!eat(Tag.SMB_SEMICOLON)) {
                 erroSintatico("Esperado \";\", encontrado " + "\"" + token.getLexema() + "\"");
             }
         } else {
             // synch: FOLLOW(CmdAtrib)
-            if (token.getClasse() == Tag.KW_ESCREVA || token.getClasse() == Tag.ID
-                    || token.getClasse() == Tag.KW_FIM) {
+            if (token.getClasse() == Tag.KW_FIM || token.getClasse() ==Tag.ID ||
+                    token.getClasse() == Tag.KW_RETORNE || token.getClasse() == Tag.KW_SE ||
+                    token.getClasse() == Tag.KW_ENQUANTO || token.getClasse() == Tag.KW_PARA ||
+                    token.getClasse() == Tag.KW_ATE || token.getClasse() == Tag.KW_REPITA ||
+                    token.getClasse() == Tag.KW_ESCREVA || token.getClasse() == Tag.KW_LEIA) {
                 erroSintatico("Esperado \"ID\", encontrado " + "\"" + token.getLexema() + "\"");
-                return;
+                //return;
             } else {
                 skip("Esperado \"ID\", encontrado " + "\"" + token.getLexema() + "\"");
                 if (token.getClasse() != Tag.EOF) {

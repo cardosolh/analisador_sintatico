@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
 
-        Lexer lexer = new Lexer("primeiro_portugolo_certo.ptgl");
+        Lexer lexer = new Lexer("primeiro_portugolo_2.ptgl");
 
 
         Parser parser = new Parser(lexer);

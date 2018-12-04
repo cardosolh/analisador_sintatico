@@ -2,8 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b46589ae-1f08-4bd3-93ee-2c9ba251572f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/primeiro_portugolo_2.ptgl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/analise_sintatica/com/company/Lexer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/analise_sintatica/com/company/Lexer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/analise_sintatica/com/company/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/analise_sintatica/com/company/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/analise_sintatica/com/company/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/analise_sintatica/com/company/Parser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/analise_sintatica/com/company/Token.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/analise_sintatica/com/company/Token.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Lexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Lexer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Token.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,11 +22,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="53" selection-start-line="7" selection-start-column="53" selection-end-line="7" selection-end-column="53" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/Parser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="413">
-              <caret line="489" column="9" lean-forward="true" selection-start-line="489" selection-start-column="9" selection-end-line="489" selection-end-column="9" />
+            <state relative-caret-position="258">
+              <caret line="362" selection-start-line="362" selection-end-line="362" />
             </state>
           </provider>
         </entry>
@@ -26,17 +43,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Token.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-216">
-              <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+            <state relative-caret-position="167">
+              <caret line="19" selection-start-line="19" selection-end-line="19" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/primeiro_portugolo_certo.ptgl">
+        <entry file="file://$PROJECT_DIR$/primeiro_portugolo_2.ptgl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
+            <state>
+              <caret column="3" selection-start-column="3" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -44,7 +61,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/TS.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
+            <state relative-caret-position="-550">
               <caret line="40" column="73" selection-start-line="40" selection-start-column="73" selection-end-line="40" selection-end-column="73" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -56,7 +73,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Tag.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
+            <state relative-caret-position="68">
               <caret line="28" column="11" selection-start-line="28" selection-start-column="11" selection-end-line="28" selection-end-column="11" />
             </state>
           </provider>
@@ -65,8 +82,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Lexer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="264" column="37" selection-start-line="264" selection-start-column="37" selection-end-line="264" selection-end-column="37" />
+            <state relative-caret-position="-3278">
+              <caret line="89" selection-start-line="89" selection-end-line="89" />
             </state>
           </provider>
         </entry>
@@ -79,6 +96,7 @@
       <find>, new InfIdentificador()</find>
       <find>&quot;&quot;</find>
       <find>&lt;--</find>
+      <find>eat(Tag.ID</find>
     </findStrings>
     <replaceStrings>
       <replace>Linha</replace>
@@ -91,15 +109,16 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/com/company/Token.java" />
         <option value="$PROJECT_DIR$/src/com/company/InfIdentificador.java" />
         <option value="$PROJECT_DIR$/src/com/company/LexerAluno.java" />
         <option value="$PROJECT_DIR$/src/com/company/Tag.java" />
         <option value="$PROJECT_DIR$/src/com/company/TS.java" />
         <option value="$PROJECT_DIR$/primeiro_portugolo.ptgl" />
-        <option value="$PROJECT_DIR$/src/com/company/Lexer.java" />
-        <option value="$PROJECT_DIR$/src/com/company/Main.java" />
         <option value="$PROJECT_DIR$/primeiro_portugolo_certo.ptgl" />
+        <option value="$PROJECT_DIR$/src/com/company/Main.java" />
+        <option value="$PROJECT_DIR$/src/com/company/Lexer.java" />
+        <option value="$PROJECT_DIR$/src/com/company/Token.java" />
+        <option value="$PROJECT_DIR$/primeiro_portugolo_2.ptgl" />
         <option value="$PROJECT_DIR$/src/com/company/Parser.java" />
       </list>
     </option>
@@ -145,7 +164,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543876018607" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543960066225" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
@@ -154,6 +173,7 @@
       <recent name="G:\Projects\GitHub\analisador_sintatico\analise_sintatica\src" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\Projects\GitHub\analisador_sintatico\analise_sintatica\src" />
       <recent name="G:\Projects\GitHub\Compilador\parte1\analise_sintatica" />
       <recent name="G:\Projects\GitHub\Compilador\parte1\analise_sintatica\src\com\company" />
     </key>
@@ -199,18 +219,17 @@
       <updated>1543759264673</updated>
       <workItem from="1543759267911" duration="702000" />
       <workItem from="1543760055481" duration="5758000" />
-      <workItem from="1543768358971" duration="33306000" />
+      <workItem from="1543768358971" duration="36722000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39766000" />
+    <option name="totallyTimeSpent" value="43182000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="953" y="40" width="974" height="1047" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.21881838" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21881838" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -218,9 +237,9 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4989059" visible="true" weight="0.309628" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39934355" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32932165" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49781182" weight="0.309628" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.39934355" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -228,7 +247,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5010941" side_tool="true" weight="0.32932165" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5021882" side_tool="true" weight="0.309628" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32932165" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -275,6 +294,52 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/com/company/Parser.java</url>
+          <line>75</line>
+          <properties class="com.company.Parser" method="Compilador">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/com/company/Parser.java</url>
+          <line>119</line>
+          <properties class="com.company.Parser" method="RegexDeclVar">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/com/company/Parser.java</url>
+          <line>334</line>
+          <properties class="com.company.Parser" method="Tipo">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/com/company/Parser.java</url>
+          <line>355</line>
+          <properties class="com.company.Parser" method="ListaCmd">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/com/company/Parser.java</url>
+          <line>378</line>
+          <properties class="com.company.Parser" method="ListaCmdLinha">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/com/company/LexerAluno.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -303,23 +368,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
+    <entry file="file://$PROJECT_DIR$/primeiro_portugolo_certo.ptgl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="57" selection-start-line="7" selection-start-column="57" selection-end-line="7" selection-end-column="57" />
+        <state relative-caret-position="306">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/primeiro_portugolo_certo.ptgl">
+    <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
+        <state relative-caret-position="119">
+          <caret line="7" column="53" selection-start-line="7" selection-start-column="53" selection-end-line="7" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/primeiro_portugolo_2.ptgl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="3" selection-start-column="3" selection-end-column="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/TS.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
+        <state relative-caret-position="-550">
           <caret line="40" column="73" selection-start-line="40" selection-start-column="73" selection-end-line="40" selection-end-column="73" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -329,29 +401,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Tag.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
+        <state relative-caret-position="68">
           <caret line="28" column="11" selection-start-line="28" selection-start-column="11" selection-end-line="28" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Token.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-216">
-          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Lexer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="264" column="37" selection-start-line="264" selection-start-column="37" selection-end-line="264" selection-end-column="37" />
+        <state relative-caret-position="-3278">
+          <caret line="89" selection-start-line="89" selection-end-line="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Token.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Parser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="489" column="9" lean-forward="true" selection-start-line="489" selection-start-column="9" selection-end-line="489" selection-end-column="9" />
+        <state relative-caret-position="258">
+          <caret line="362" selection-start-line="362" selection-end-line="362" />
         </state>
       </provider>
     </entry>
