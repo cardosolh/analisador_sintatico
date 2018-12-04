@@ -31,6 +31,7 @@ public class TS {
         this.tabelaSimbolos.put("leia",(new Token(Tag.KW_LEIA,"leia",0,0)));
         this.tabelaSimbolos.put("literal",(new Token(Tag.KW_LITERAL,"literal",0,0)));
         this.tabelaSimbolos.put("logico",(new Token(Tag.KW_LOGICO,"logico",0,0)));
+        this.tabelaSimbolos.put("nao",(new Token(Tag.KW_NAO,"nao",0,0)));
         this.tabelaSimbolos.put("nulo",(new Token(Tag.KW_NULO,"nulo",0,0)));
         this.tabelaSimbolos.put("numerico",(new Token(Tag.KW_NUMERICO,"numerico",0,0)));
         this.tabelaSimbolos.put("ou",(new Token(Tag.KW_OU,"ou",0,0)));

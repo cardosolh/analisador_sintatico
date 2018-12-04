@@ -52,6 +52,7 @@ public enum Tag {
     KW_LEIA,
     KW_LITERAL,
     KW_LOGICO,
+    KW_NAO,
     KW_NULO,
     KW_NUMERICO,
     KW_OU,
@@ -62,4 +63,5 @@ public enum Tag {
     KW_SENAO,
     KW_SUBROTINA,
     KW_VERDADEIRO;
+
 }
