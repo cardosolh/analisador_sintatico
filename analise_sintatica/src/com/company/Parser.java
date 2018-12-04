@@ -466,11 +466,31 @@ public class Parser {
                     token.getClasse() == Tag.KW_ENQUANTO || token.getClasse() == Tag.KW_PARA ||
                     token.getClasse() == Tag.KW_ATE || token.getClasse() == Tag.KW_REPITA ||
                     token.getClasse() == Tag.KW_ESCREVA || token.getClasse() == Tag.KW_LEIA) return;
-
+	    else{
+            skip("Esperado \"senao\", encontrado " + "\"" + token.getLexema() + "\"");
+            if(token.getClasse() != Tag.EOF) CmdSeLinha();
+        }
 	}
 
 	//CmdEnquanto → "enquanto" "(" Expressao ")" "faca" "inicio" ListaCmd "fim" [39]
 	public void CmdEnquanto(){
+        System.out.println("[DEBUG] CmdEnquanto()");
+
+            if(!eat(Tag.KW_ENQUANTO))
+            erroSintatico("Esperado \"enquanto\", encontrado " + "\"" + token.getLexema() + "\"");
+            if(!eat(Tag.SMB_OP))
+                erroSintatico("Esperado \"(\", encontrado " + "\"" + token.getLexema() + "\"");
+            Expressao();
+            if(!eat(Tag.SMB_CP))
+                erroSintatico("Esperado \")\", encontrado " + "\"" + token.getLexema() + "\"");
+            if(!eat(Tag.KW_FACA))
+                erroSintatico("Esperado \"faca\", encontrado " + "\"" + token.getLexema() + "\"");
+            if(!eat(Tag.KW_INICIO))
+                erroSintatico("Esperado \"inicio\", encontrado " + "\"" + token.getLexema() + "\"");
+            ListaCmd();
+            if(!eat(Tag.KW_FIM))
+                erroSintatico("Esperado \"fim\", encontrado " + "\"" + token.getLexema() + "\"");
+
 
 	}
 
