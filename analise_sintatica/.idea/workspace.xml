@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b46589ae-1f08-4bd3-93ee-2c9ba251572f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/primeiro_portugolo_2.ptgl" beforeDir="false" afterPath="$PROJECT_DIR$/primeiro_portugolo_2.ptgl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/TS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/TS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Tag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Tag.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,8 +27,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/Parser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="630" column="44" selection-start-line="630" selection-start-column="44" selection-end-line="630" selection-end-column="44" />
+            <state relative-caret-position="272">
+              <caret line="273" selection-start-line="273" selection-end-line="273" />
             </state>
           </provider>
         </entry>
@@ -47,7 +46,7 @@
         <entry file="file://$PROJECT_DIR$/primeiro_portugolo_2.ptgl">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
-              <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
+              <caret line="5" column="9" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -109,11 +108,11 @@
         <option value="$PROJECT_DIR$/primeiro_portugolo.ptgl" />
         <option value="$PROJECT_DIR$/primeiro_portugolo_certo.ptgl" />
         <option value="$PROJECT_DIR$/src/com/company/Token.java" />
-        <option value="$PROJECT_DIR$/primeiro_portugolo_2.ptgl" />
         <option value="$PROJECT_DIR$/src/com/company/Main.java" />
         <option value="$PROJECT_DIR$/src/com/company/Lexer.java" />
         <option value="$PROJECT_DIR$/src/com/company/TS.java" />
         <option value="$PROJECT_DIR$/src/com/company/Tag.java" />
+        <option value="$PROJECT_DIR$/primeiro_portugolo_2.ptgl" />
         <option value="$PROJECT_DIR$/src/com/company/Parser.java" />
       </list>
     </option>
@@ -214,12 +213,12 @@
       <updated>1543759264673</updated>
       <workItem from="1543759267911" duration="702000" />
       <workItem from="1543760055481" duration="5758000" />
-      <workItem from="1543768358971" duration="41673000" />
+      <workItem from="1543768358971" duration="43540000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48133000" />
+    <option name="totallyTimeSpent" value="50000000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="953" y="40" width="974" height="1047" extended-state="0" />
@@ -295,7 +294,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/com/company/Parser.java</url>
-          <line>334</line>
+          <line>313</line>
           <properties class="com.company.Parser" method="Tipo">
             <option name="EMULATED" value="true" />
           </properties>
@@ -303,7 +302,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/com/company/Parser.java</url>
-          <line>355</line>
+          <line>334</line>
           <properties class="com.company.Parser" method="ListaCmd">
             <option name="EMULATED" value="true" />
           </properties>
@@ -311,7 +310,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/com/company/Parser.java</url>
-          <line>378</line>
+          <line>357</line>
           <properties class="com.company.Parser" method="ListaCmdLinha">
             <option name="EMULATED" value="true" />
           </properties>
@@ -369,20 +368,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/primeiro_portugolo_2.ptgl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Token.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/TS.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
@@ -400,10 +385,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Token.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/primeiro_portugolo_2.ptgl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="9" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Parser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="630" column="44" selection-start-line="630" selection-start-column="44" selection-end-line="630" selection-end-column="44" />
+        <state relative-caret-position="272">
+          <caret line="273" selection-start-line="273" selection-end-line="273" />
         </state>
       </provider>
     </entry>

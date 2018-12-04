@@ -86,12 +86,6 @@ public class Parser {
 	public void Programa() {
     System.out.println("[DEBUG] Programa()");
 
-        /*OBS.: vimos que para o primeiro, eh melhor chamar o metodo skip()
-                * para nao prejudicar a leitura no restante do codigo.
-                * Se percebermos na TP, 'Programa' e 'Classe' possuem os mesmos
-                * FIRST e FOLLOW. Entao a regra para se analisar a sincronizacao no
-                * primeiro instante em que entra nesses metodos eh a mesma.*/
-
         if(!eat(Tag.KW_ALGORITMO)) {
             skip("Esperado \"algoritmo\", encontrado "  + "\"" + token.getLexema() + "\"");
         }
@@ -100,19 +94,12 @@ public class Parser {
         ListaCmd();
 
         if(!eat(Tag.KW_FIM)) { // espera "fim"
-
-            /*ATENCAO: no caso 'terminal esperado' vs 'terminal na entrada', de acordo com vimos em sala:
-            // o terminal esperado não casou com o terminal da entrada,
-            // dai vamos simular o 'desempilha terminal',
-            // isto eh, continue a varredura, mantendo a entrada.*/
-
             erroSintatico("Esperado \"fim\", encontrado "  + "\"" + token.getLexema() + "\"");
         }
 
         if(!eat(Tag.KW_ALGORITMO)) {
             skip("Esperado \"algoritmo\", encontrado "  + "\"" + token.getLexema() + "\"");
         }
-
        ListaRotina();
 	}
 
@@ -139,12 +126,6 @@ public class Parser {
             return;
         }
         else {
-         /* Percebemos na TP que o unico metodo a ser chamado no caso de erro, seria o skip().
-         * Mas a ideia do skip() eh avancar a entrada sem retirar ListaDeclaraVar() da pilha
-         * (recursiva). So que chegamos ao fim do metodo ListaDeclaraVar(). Como podemos
-         * mante-lo na pilha recursiva?
-         * Simples, chamamos skip() e o proprio metodo ListaDeclaraVar().
-                    */
             skip("Esperado \"fim, ID, retorne, se, enquanto, para, repita, escreva, leia\", encontrado " + "\"" + token.getLexema() + "\"");
             if(token.getClasse() != Tag.EOF) RegexDeclVar();
         }
@@ -188,6 +169,7 @@ public class Parser {
 	//ListaRotinaLinha → Rotina ListaRotinaLinha [8] | ε [9]
 	public void ListaRotinaLinha() {
 		System.out.println("[DEBUG] ListaRotinaLinha()");
+
 		//ListaRotinaLinha → Rotina ListaRotinaLinha [8]
 		if(token.getClasse() == Tag.KW_SUBROTINA){ // FIRST(Rotina)
 
@@ -206,15 +188,21 @@ public class Parser {
 	public void Rotina() {
         System.out.println("[DEBUG] Rotina()");
         if(eat(Tag.KW_SUBROTINA)){
-            if(!eat(Tag.ID)) erroSintatico("Esperado \"ID\", encontrado "  + "\"" + token.getLexema() + "\"");
-            if(!eat(Tag.SMB_OP)) erroSintatico("Esperado \"(\", encontrado "  + "\"" + token.getLexema() + "\"");
+            if(!eat(Tag.ID))
+                erroSintatico("Esperado \"ID\", encontrado "  + "\"" + token.getLexema() + "\"");
+
+            if(!eat(Tag.SMB_OP))
+                erroSintatico("Esperado \"(\", encontrado "  + "\"" + token.getLexema() + "\"");
             ListaParam();
-            if(!eat(Tag.SMB_CP)) erroSintatico("Esperado \")\", encontrado "  + "\"" + token.getLexema() + "\"");
+            if(!eat(Tag.SMB_CP))
+                erroSintatico("Esperado \")\", encontrado "  + "\"" + token.getLexema() + "\"");
             RegexDeclVar();
             ListaCmd();
             Retorno();
-            if(!eat(Tag.KW_FIM)) erroSintatico("Esperado \"fim\", encontrado "  + "\"" + token.getLexema() + "\"");
-            if(!eat(Tag.KW_SUBROTINA)) erroSintatico("Esperado \"subrotina\", encontrado "  + "\"" + token.getLexema() + "\"");
+            if(!eat(Tag.KW_FIM))
+                erroSintatico("Esperado \"fim\", encontrado "  + "\"" + token.getLexema() + "\"");
+            if(!eat(Tag.KW_SUBROTINA))
+                erroSintatico("Esperado \"subrotina\", encontrado "  + "\"" + token.getLexema() + "\"");
         }else{
             if(token.getClasse() == Tag.KW_SUBROTINA || token.getClasse() == Tag.EOF) {
                 erroSintatico("Esperado \"subrotina, EOF\", encontrado "  + "\"" + token.getLexema() + "\"");
@@ -240,17 +228,11 @@ public class Parser {
 
 	//ListaParamLinha → "," ListaParam [12] | ε [13]
 	public void ListaParamLinha() {
+        System.out.println("[DEBUG] ListaParamLinha()");
 	    if(eat(Tag.SMB_COMMA))
 	        ListaParam();
 	    else if(token.getClasse() == Tag.SMB_CP)
-            if(!eat(Tag.EOF)) {
-                skip("Esperado \")\", encontrado "  + "\"" + token.getLexema() + "\"");
-            }
-	    else{
-                skip("Esperado \"--,--, )\", encontrado "  + "\"" + token.getLexema() + "\"");
-                if(token.getClasse() != Tag.EOF) ListaParamLinha();
-            }
-
+	        return;
 	}
 
 	//Param → ListaID Tipo [14]
@@ -288,10 +270,7 @@ public class Parser {
 		System.out.println("[DEBUG] ListaIDLinha()");
 
 		//ListaIDLinha → "," ListaID [16]
-		if(token.getClasse() == Tag.SMB_COMMA) {
-
-			if(!eat(Tag.SMB_COMMA))
-				erroSintatico("Esperado \"-- , --\", encontrado " + "\"" + token.getLexema() + "\"");
+		if(eat(Tag.SMB_COMMA)) {
 			ListaID();
 		}
 		//ListaIDLinha → ε [17]
@@ -343,7 +322,7 @@ public class Parser {
 					token.getClasse() == Tag.SMB_CP) {
 
 				erroSintatico("Esperado \"ID, --,-- , )\", encontrado "  + "\"" + token.getLexema() + "\"");
-				return;
+				//return;
 			}
 			else {
 				skip("Esperado \"Esperado \"ID, --,-- , )\", encontrado  "  + "\"" + token.getLexema() + "\"");
@@ -631,8 +610,9 @@ public class Parser {
             token.getClasse() == Tag.LITERAL) {
             Expressao();
             RegexExpLinha();
-        } else {
-
+        } else if(token.getClasse() == Tag.SMB_CP){
+            return;}
+        else{
             skip("Esperado \"KW\", encontrado " + "\"" + token.getLexema() + "\"");
             if (token.getClasse() != Tag.EOF) {
                 ListaCmd();

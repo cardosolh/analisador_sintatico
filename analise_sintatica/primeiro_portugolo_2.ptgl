@@ -3,7 +3,7 @@ algoritmo
 	LITERAL op , a;
 	NUMERICO s,d;
 	Nulo a;
-	s  5+5;
+	s <--  5+5;
 	op <-- "ads";
 		escreva("s + a");
 	leia(op);
