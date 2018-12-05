@@ -824,10 +824,17 @@ public void Exp2Linha() {
 	if (eat(Tag.RELOP_PLUS) || eat(Tag.RELOP_MINUS)) {
 		Exp3();
 		Exp2Linha();
-	} else if (token.getClasse() == Tag.SMB_CP || token.getClasse() == Tag.SMB_SEMICOLON
-			|| token.getClasse() == Tag.RELOP_GT || token.getClasse() == Tag.RELOP_LT
-			|| token.getClasse() == Tag.RELOP_GE || token.getClasse() == Tag.RELOP_LE
-			|| token.getClasse() == Tag.RELOP_EQ || token.getClasse() == Tag.RELOP_NE) {
+	} else if ( token.getClasse() == Tag.KW_FIM || token.getClasse() == Tag.SMB_CP ||
+            token.getClasse() == Tag.SMB_SEMICOLON || token.getClasse() == Tag.ID ||
+            token.getClasse() == Tag.SMB_COMMA || token.getClasse() == Tag.KW_RETORNE ||
+            token.getClasse() == Tag.KW_SE || token.getClasse() == Tag.KW_ENQUANTO ||
+            token.getClasse() == Tag.KW_PARA || token.getClasse() == Tag.KW_ATE ||
+            token.getClasse() == Tag.KW_REPITA || token.getClasse() == Tag.KW_ESCREVA ||
+            token.getClasse() == Tag.KW_LEIA || token.getClasse() == Tag.KW_E ||
+            token.getClasse() == Tag.KW_OU  
+            || token.getClasse() == Tag.RELOP_GT || token.getClasse() == Tag.RELOP_LT
+            || token.getClasse() == Tag.RELOP_GE || token.getClasse() == Tag.RELOP_LE
+            || token.getClasse() == Tag.RELOP_EQ || token.getClasse() == Tag.RELOP_NE) {
 		return;
 	} else {
 		skip("Esperado \" +, -, ), ;, >, <, >=, <=, ==, !=\", encontrado " + "\"" + token.getLexema() + "\"");
@@ -872,7 +879,15 @@ public void Exp3Linha() {
 	if (eat(Tag.RELOP_MULT) || eat(Tag.RELOP_DIV)) {
 		Exp4();
 		Exp3Linha();
-	} else if (token.getClasse() == Tag.SMB_CP || token.getClasse() == Tag.SMB_SEMICOLON
+	} else if ( token.getClasse() == Tag.KW_FIM || token.getClasse() == Tag.SMB_CP ||
+                token.getClasse() == Tag.SMB_SEMICOLON || token.getClasse() == Tag.ID ||
+                token.getClasse() == Tag.SMB_COMMA || token.getClasse() == Tag.KW_RETORNE ||
+                token.getClasse() == Tag.KW_SE || token.getClasse() == Tag.KW_ENQUANTO ||
+                token.getClasse() == Tag.KW_PARA || token.getClasse() == Tag.KW_ATE ||
+                token.getClasse() == Tag.KW_REPITA || token.getClasse() == Tag.KW_ESCREVA ||
+                token.getClasse() == Tag.KW_LEIA || token.getClasse() == Tag.KW_E ||
+                token.getClasse() == Tag.KW_OU || token.getClasse() == Tag.RELOP_PLUS ||
+                token.getClasse() == Tag.RELOP_MINUS
 			|| token.getClasse() == Tag.RELOP_GT || token.getClasse() == Tag.RELOP_LT
 			|| token.getClasse() == Tag.RELOP_GE || token.getClasse() == Tag.RELOP_LE
 			|| token.getClasse() == Tag.RELOP_EQ || token.getClasse() == Tag.RELOP_NE) {
@@ -924,10 +939,19 @@ public void Exp4Linha() {
 		RegexExp();
 		if(!eat(Tag.SMB_CP))
             erroSintatico("Esperado \")\", encontrado " + "\"" + token.getLexema() + "\"");
-	} else if (token.getClasse() == Tag.SMB_SEMICOLON
-			|| token.getClasse() == Tag.RELOP_GT || token.getClasse() == Tag.RELOP_LT
-			|| token.getClasse() == Tag.RELOP_MULT || token.getClasse() == Tag.RELOP_LE
-			|| token.getClasse() == Tag.RELOP_EQ || token.getClasse() == Tag.RELOP_NE) {
+	} else if ( token.getClasse() == Tag.KW_DECLARE || token.getClasse() == Tag.SMB_CP ||
+            token.getClasse() == Tag.SMB_SEMICOLON || token.getClasse() == Tag.ID ||
+            token.getClasse() == Tag.SMB_COMMA || token.getClasse() == Tag.KW_RETORNE ||
+            token.getClasse() == Tag.KW_SE || token.getClasse() == Tag.KW_ENQUANTO ||
+            token.getClasse() == Tag.KW_PARA || token.getClasse() == Tag.KW_ATE ||
+            token.getClasse() == Tag.KW_REPITA || token.getClasse() == Tag.KW_ESCREVA ||
+            token.getClasse() == Tag.KW_LEIA || token.getClasse() == Tag.KW_E ||
+            token.getClasse() == Tag.KW_OU || token.getClasse() == Tag.RELOP_PLUS ||
+            token.getClasse() == Tag.RELOP_MINUS || token.getClasse() == Tag.RELOP_MULT ||
+            token.getClasse() == Tag.RELOP_DIV
+            || token.getClasse() == Tag.RELOP_GT || token.getClasse() == Tag.RELOP_LT
+            || token.getClasse() == Tag.RELOP_GE || token.getClasse() == Tag.RELOP_LE
+            || token.getClasse() == Tag.RELOP_EQ || token.getClasse() == Tag.RELOP_NE)  {
 		return;
 	} else {
 		skip("Esperado \"( , )\", encontrado " + "\"" + token.getLexema() + "\"");
