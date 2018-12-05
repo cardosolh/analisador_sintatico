@@ -245,25 +245,27 @@ public class Parser {
 
 	}
 
-	//ListaID → ID ListaIDLinha [15]
-	public void ListaID () {
+	public void ListaID() {
         System.out.println("[DEBUG] ListaID()");
 
-		if(eat(Tag.ID)) {
-		    ListaIDLinha();
-		}else{
-		    if( token.getClasse() == Tag.SMB_SEMICOLON || token.getClasse() == Tag.KW_LOGICO ||
-                token.getClasse() == Tag.NUMERICO || token.getClasse() == Tag.LITERAL ||
-                token.getClasse() == Tag.KW_NULO){
-                erroSintatico("Esperado \"ID\", encontrado "  + "\"" + token.getLexema() + "\"");
-            }
-		    else{
-                skip("Esperado \"ID\", encontrado "  + "\"" + token.getLexema() + "\"");
-                if(token.getClasse() != Tag.EOF) ListaID();
+        if (eat(Tag.ID)) {
+            ListaIDLinha();
+        } else {
+            if (token.getClasse() == Tag.SMB_SEMICOLON || token.getClasse() == Tag.KW_LOGICO
+                    || token.getClasse() == Tag.NUMERICO || token.getClasse() == Tag.LITERAL
+                    || token.getClasse() == Tag.KW_NULO) {
+                erroSintatico("Esperado \"ID\", encontrado " + "\"" + token.getLexema() + "\"");
+            } else {
+                skip("Esperado \"ID\", encontrado " + "\"" + token.getLexema() + "\"");
+                if (token.getClasse() != Tag.EOF) {
+                    ListaID();
+                }
+                if (token.getClasse() == Tag.EOF) {
+                    System.exit(0);
+                }
             }
         }
-
-	}
+    }
 
 	//ListaIDLinha → "," ListaID [16] | ε [17]
 	public void  ListaIDLinha(){
