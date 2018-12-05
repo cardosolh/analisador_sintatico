@@ -25,8 +25,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/Parser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1303">
-              <caret line="705" column="40" lean-forward="true" selection-start-line="705" selection-start-column="40" selection-end-line="705" selection-end-column="40" />
+            <state relative-caret-position="75">
+              <caret line="903" column="19" selection-start-line="903" selection-start-column="19" selection-end-line="903" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -161,7 +161,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543963451039" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543971992903" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
@@ -216,12 +216,12 @@
       <updated>1543759264673</updated>
       <workItem from="1543759267911" duration="702000" />
       <workItem from="1543760055481" duration="5758000" />
-      <workItem from="1543768358971" duration="47032000" />
+      <workItem from="1543768358971" duration="48132000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53492000" />
+    <option name="totallyTimeSpent" value="54592000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="953" y="40" width="974" height="1047" extended-state="0" />
@@ -416,8 +416,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Parser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1303">
-          <caret line="705" column="40" lean-forward="true" selection-start-line="705" selection-start-column="40" selection-end-line="705" selection-end-column="40" />
+        <state relative-caret-position="75">
+          <caret line="903" column="19" selection-start-line="903" selection-start-column="19" selection-end-line="903" selection-end-column="19" />
         </state>
       </provider>
     </entry>

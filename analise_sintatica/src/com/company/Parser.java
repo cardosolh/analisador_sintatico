@@ -702,8 +702,10 @@ public void CmdLeia() {
 //Expressao → Exp1 ExpLinha [50]
 public void Expressao() {
     System.out.println("[DEBUG] Expressao()");
-	if (token.getClasse() == Tag.NUMERICO
-			|| token.getClasse() == Tag.LITERAL || token.getClasse() == Tag.ID) {
+	if (    token.getClasse() == Tag.ID || token.getClasse() == Tag.SMB_OP ||
+            token.getClasse() == Tag.KW_NAO || token.getClasse() == Tag.KW_VERDADEIRO ||
+            token.getClasse() == Tag.KW_FALSO || token.getClasse() == Tag.NUMERICO ||
+            token.getClasse() == Tag.LITERAL) {
 		Exp1();
 		ExpLinha();
 
@@ -769,7 +771,7 @@ public void Exp1() {
 
 //Exp1Linha → E Exp2 Exp1Linha [59] | Ou Exp2 Exp1Linha [60]| ε [61]
 public void Exp1Linha() {
-	System.out.println("[DEBUG] ExpLinha'()");
+	System.out.println("[DEBUG] Exp1Linha()");
 
 	if (eat(Tag.RELOP_PLUS) || eat(Tag.RELOP_MINUS)) {
 		Exp2();
@@ -792,7 +794,7 @@ public void Exp2() {
 			|| token.getClasse() == Tag.ID) {
 
 		Exp3();
-		Expt2Linha();
+		Exp2Linha();
 	} else {
 		// synch: FOLLOW(Expressao2)
 		if (token.getClasse() == Tag.RELOP_PLUS || token.getClasse() == Tag.RELOP_MINUS
@@ -813,12 +815,12 @@ public void Exp2() {
 }
 
 //Exp2Linha → + Exp3 Exp2Linha [63] | - Exp3 Exp2Linha [64] | ε [65]
-public void Expt2Linha() {
-	System.out.println("[DEBUG] Expt2'()");
+public void Exp2Linha() {
+	System.out.println("[DEBUG] Exp2Linha()");
 
 	if (eat(Tag.RELOP_PLUS) || eat(Tag.RELOP_MINUS)) {
 		Exp3();
-		Expt2Linha();
+		Exp2Linha();
 	} else if (token.getClasse() == Tag.SMB_CP || token.getClasse() == Tag.SMB_SEMICOLON
 			|| token.getClasse() == Tag.RELOP_GT || token.getClasse() == Tag.RELOP_LT
 			|| token.getClasse() == Tag.RELOP_GE || token.getClasse() == Tag.RELOP_LE
@@ -827,7 +829,7 @@ public void Expt2Linha() {
 	} else {
 		skip("Esperado \" +, -, ), ;, >, <, >=, <=, ==, !=\", encontrado " + "\"" + token.getLexema() + "\"");
 		if (token.getClasse() != Tag.EOF) {
-			Expt2Linha();
+			Exp2Linha();
 		}
 	}
 }
@@ -836,7 +838,10 @@ public void Expt2Linha() {
 public void Exp3() {
 	System.out.println("[DEBUG] Exp3()");
 
-	if (!eat(Tag.NUMERICO) && !eat(Tag.LITERAL) && !eat(Tag.ID)) {
+	if (token.getClasse() == Tag.ID || token.getClasse() == Tag.SMB_OP ||
+            token.getClasse() == Tag.KW_NAO || token.getClasse() == Tag.KW_VERDADEIRO ||
+            token.getClasse() == Tag.KW_FALSO || token.getClasse() == Tag.NUMERICO ||
+            token.getClasse() == Tag.LITERAL) {
 		Exp4();
 		Exp3Linha();
 	}
@@ -859,7 +864,7 @@ public void Exp3() {
 
 //Exp3Linha →* Exp4 Exp3Linha [67] | / Exp4 Exp3Linha [68] | ε [69]
 public void Exp3Linha() {
-	System.out.println("[DEBUG] Exp3Linha'()");
+	System.out.println("[DEBUG] Exp3Linha()");
 
 	if (eat(Tag.RELOP_MULT) || eat(Tag.RELOP_DIV)) {
 		Exp4();
@@ -882,16 +887,23 @@ public void Exp3Linha() {
 // 			“falso” [74] | OpUnario Expressao [75]|
 // 			“(“ Expressao “)” [76]
 public void Exp4() {
-	System.out.println("[DEBUG] Exp4Linha'()");
-	if (eat(Tag.NUMERICO) || eat(Tag.LITERAL) || eat(Tag.KW_VERDADEIRO)
-			|| eat(Tag.KW_FALSO)) {     
-		return;
-	} else if(eat(Tag.ID)){
-		Exp4Linha();
-		
-	}else if (token.getClasse() == Tag.SMB_OP || token.getClasse() == Tag.SMB_SEMICOLON) {
-		Expressao();
-		return;
+	System.out.println("[DEBUG] Exp4()");
+
+	if(token.getClasse() == Tag.ID || token.getClasse() == Tag.SMB_OP ||
+            token.getClasse() == Tag.KW_NAO || token.getClasse() == Tag.KW_VERDADEIRO ||
+            token.getClasse() == Tag.KW_FALSO || token.getClasse() == Tag.NUMERICO ||
+            token.getClasse() == Tag.LITERAL){
+        if (eat(Tag.NUMERICO) || eat(Tag.LITERAL) || eat(Tag.KW_VERDADEIRO)
+                || eat(Tag.KW_FALSO)) {
+            return;
+        } else if(eat(Tag.ID)){
+            Exp4Linha();
+
+        }else if (token.getClasse() == Tag.SMB_OP || token.getClasse() == Tag.SMB_SEMICOLON) {
+            Expressao();
+            return;
+    }
+
 	} else {
 		skip("Esperado \"ID, Numerico, Litetal, verdadeiro, falso,  OpUnario, ), ;\", encontrado " + "\"" + token.getLexema() + "\"");
 		if (token.getClasse() != Tag.EOF) {
@@ -902,10 +914,13 @@ public void Exp4() {
 
 //Exp4Linha → “(“ RegexExp ”)” [77] | ε [78]
 public void Exp4Linha() {
-	System.out.println("[DEBUG] Exp4'()");
+	System.out.println("[DEBUG] Exp4Linha()");
 
-	if (eat(Tag.SMB_OP) || eat(Tag.SMB_CP)) {
+	if (eat(Tag.SMB_OP)) {
+
 		RegexExp();
+		if(!eat(Tag.SMB_CP))
+            erroSintatico("Esperado \")\", encontrado " + "\"" + token.getLexema() + "\"");
 	} else if (token.getClasse() == Tag.SMB_SEMICOLON
 			|| token.getClasse() == Tag.RELOP_GT || token.getClasse() == Tag.RELOP_LT
 			|| token.getClasse() == Tag.RELOP_MULT || token.getClasse() == Tag.RELOP_LE
@@ -921,7 +936,7 @@ public void Exp4Linha() {
 
 //OpUnario → "Nao" [79]
 public void OpUnario() {
-	System.out.println("[DEBUG] OpUnario'()");
+	System.out.println("[DEBUG] OpUnario()");
 
 	if (eat(Tag.SMB_OP)) {
 
