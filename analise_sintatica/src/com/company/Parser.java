@@ -385,7 +385,7 @@ public class Parser {
 	//		CmdLeia [33]
 
 	public void Cmd() {
-        System.out.println("[DEBUG] ListaCmdLinha()");
+        System.out.println("[DEBUG] Cmd()");
         //Cmd →	CmdSe [27]
         if(token.getClasse()==Tag.KW_SE)
             CmdSe();
@@ -399,7 +399,7 @@ public class Parser {
         else if(token.getClasse()==Tag.KW_REPITA)
             CmdRepita();
         //Cmd →	Cmdlinha [31]
-        else if(token.getClasse()==Tag.ID)
+        else if(eat(Tag.ID))
             CmdLinha();
         //Cmd →	CmdEscreva [32]
         else if(token.getClasse()==Tag.KW_ESCREVA)
