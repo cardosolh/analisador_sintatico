@@ -771,14 +771,17 @@ public void Exp1() {
 
 //Exp1Linha → E Exp2 Exp1Linha [59] | Ou Exp2 Exp1Linha [60]| ε [61]
 public void Exp1Linha() {
-	System.out.println("[DEBUG] Exp1Linha()");
+	System.out.println("[DEBUG] ExpLinha'()");
 
 	if (eat(Tag.RELOP_PLUS) || eat(Tag.RELOP_MINUS)) {
 		Exp2();
-		Exp1Linha();
-	} else if (token.getClasse() == Tag.SMB_CP || token.getClasse() == Tag.SMB_SEMICOLON) {
+		Exp1Linha();	
+	} else if (token.getClasse() == Tag.SMB_CP || token.getClasse() == Tag.SMB_SEMICOLON
+			|| token.getClasse() == Tag.RELOP_GT || token.getClasse() == Tag.RELOP_LT
+			|| token.getClasse() == Tag.RELOP_GE || token.getClasse() == Tag.RELOP_LE
+			|| token.getClasse() == Tag.RELOP_EQ || token.getClasse() == Tag.RELOP_NE) {
 		return;
-	} else {
+        }else {
 		skip("Esperado \"E, OU\", encontrado " + "\"" + token.getLexema() + "\"");
 		if (token.getClasse() != Tag.EOF) {
 			Exp1Linha();
