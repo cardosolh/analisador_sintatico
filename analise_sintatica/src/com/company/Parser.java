@@ -917,9 +917,11 @@ public void Exp4() {
         } else if(eat(Tag.ID)){
             Exp4Linha();
 
-        }else if (token.getClasse() == Tag.SMB_OP || token.getClasse() == Tag.SMB_SEMICOLON) {
+        } else if (token.getClasse() == Tag.SMB_OP) {
             Expressao();
-            return;
+            if (!eat(Tag.SMB_CP)) {
+                erroSintatico("Esperado \")\", encontrado " + "\"" + token.getLexema() + "\"");
+            }
     }
 
 	} else {
