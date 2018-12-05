@@ -543,6 +543,7 @@ public class Parser {
 
 //CmdRepita → "repita" ListaCmd "ate" Expressao [41]
     public void CmdRepita() {
+        System.out.println("[DEBUG] CmdRepita()");
         if (eat(Tag.KW_REPITA) || eat(Tag.KW_ATE)) {
             ListaCmd();
             CmdRepita();
@@ -590,6 +591,7 @@ public class Parser {
 
 //CmdChamaRotina → "(" RegexExp ")" ";" [43]
     public void CmdChamaRotina() {
+        System.out.println("[DEBUG] CmdChamadaRotina()");
         if (eat(Tag.SMB_OP)) {
             RegexExp();
             if(!eat(Tag.SMB_CP))
@@ -608,6 +610,7 @@ public class Parser {
 
 //RegexExp → Expressao RegexExpLinha [44] | ε [45]
     public void RegexExp() {
+        System.out.println("[DEBUG] RegexExp()");
         if (token.getClasse() == Tag.ID || token.getClasse() == Tag.SMB_OP ||
             token.getClasse() == Tag.KW_NAO || token.getClasse() == Tag.KW_VERDADEIRO ||
             token.getClasse() == Tag.KW_FALSO || token.getClasse() == Tag.NUMERICO ||
@@ -627,6 +630,7 @@ public class Parser {
 
 //RegexExpLinha → , Expressao RegexExpLinha [46] | ε [47]
 public void RegexExpLinha() {
+    System.out.println("[DEBUG] RegexExpLinha()");
 	if (eat(Tag.SMB_COMMA)) {
 		Expressao();
 		RegexExpLinha();
@@ -642,6 +646,7 @@ public void RegexExpLinha() {
 
 //CmdEscreva → "escreva" "(" Expressao ")" ";" [48]
 public void CmdEscreva() {
+    System.out.println("[DEBUG] CmdEscreva()");
 	if (eat(Tag.KW_ESCREVA)) {
 		if (!eat(Tag.SMB_OP)) {
 			erroSintatico("Esperado \"(\", encontrado " + "\"" + token.getLexema() + "\"");
@@ -671,6 +676,7 @@ public void CmdEscreva() {
 
 //CmdLeia → "leia" "(" ID ")" ";" [49]
 public void CmdLeia() {
+    System.out.println("[DEBUG] CmdLeia()");
 	if (eat(Tag.KW_LEIA)) {
 		if (!eat(Tag.SMB_OP)) {
 			erroSintatico("Esperado \"(\", encontrado " + "\"" + token.getLexema() + "\"");
@@ -695,8 +701,9 @@ public void CmdLeia() {
 
 //Expressao → Exp1 ExpLinha [50]
 public void Expressao() {
-	if (token.getClasse() == Tag.KW_NUMERICO
-			|| token.getClasse() == Tag.KW_LITERAL || token.getClasse() == Tag.ID) {
+    System.out.println("[DEBUG] Expressao()");
+	if (token.getClasse() == Tag.NUMERICO
+			|| token.getClasse() == Tag.LITERAL || token.getClasse() == Tag.ID) {
 		Exp1();
 		ExpLinha();
 
@@ -718,6 +725,7 @@ public void Expressao() {
 // 				> Exp1 ExpLinha [53] | >= Exp1 ExpLinha [54] |
 //		 		= Exp1 ExpLinha [55] | <> Exp1 ExpLinha [56] | ε [57]
 public void ExpLinha() {
+    System.out.println("[DEBUG] ExpLinha()");
 	if (eat(Tag.RELOP_GT) || eat(Tag.RELOP_LT) || eat(Tag.RELOP_GE)
 			|| eat(Tag.RELOP_LE) || eat(Tag.RELOP_EQ) || eat(Tag.RELOP_NE)) {
 		Exp1();
@@ -734,9 +742,9 @@ public void ExpLinha() {
 
 //Exp1 → Exp2 Exp1Linha [58]
 public void Exp1() {
-	System.out.println("[DEBUG] Exp2()");
-	if (token.getClasse() == Tag.KW_NUMERICO
-			|| token.getClasse() == Tag.KW_LITERAL
+	System.out.println("[DEBUG] Exp1()");
+	if (token.getClasse() == Tag.NUMERICO
+			|| token.getClasse() == Tag.LITERAL
 			|| token.getClasse() == Tag.ID) {
 
 		Exp2();
@@ -761,7 +769,7 @@ public void Exp1() {
 
 //Exp1Linha → E Exp2 Exp1Linha [59] | Ou Exp2 Exp1Linha [60]| ε [61]
 public void Exp1Linha() {
-	System.out.println("[DEBUG] Expo1Linha'()");
+	System.out.println("[DEBUG] ExpLinha'()");
 
 	if (eat(Tag.RELOP_PLUS) || eat(Tag.RELOP_MINUS)) {
 		Exp2();
@@ -779,8 +787,8 @@ public void Exp1Linha() {
 //Exp2 → Exp3 Exp2Linha [62]
 public void Exp2() {
 	System.out.println("[DEBUG] Exp2()");
-	if (token.getClasse() == Tag.KW_NUMERICO
-			|| token.getClasse() == Tag.KW_LITERAL
+	if (token.getClasse() == Tag.NUMERICO
+			|| token.getClasse() == Tag.LITERAL
 			|| token.getClasse() == Tag.ID) {
 
 		Exp3();
@@ -828,7 +836,7 @@ public void Expt2Linha() {
 public void Exp3() {
 	System.out.println("[DEBUG] Exp3()");
 
-	if (!eat(Tag.KW_NUMERICO) && !eat(Tag.KW_LITERAL) && !eat(Tag.ID)) {
+	if (!eat(Tag.NUMERICO) && !eat(Tag.LITERAL) && !eat(Tag.ID)) {
 		Exp4();
 		Exp3Linha();
 	}
@@ -875,7 +883,7 @@ public void Exp3Linha() {
 // 			“(“ Expressao “)” [76]
 public void Exp4() {
 	System.out.println("[DEBUG] Exp4Linha'()");
-	if (eat(Tag.KW_NUMERICO) || eat(Tag.KW_LITERAL) || eat(Tag.KW_VERDADEIRO)
+	if (eat(Tag.NUMERICO) || eat(Tag.LITERAL) || eat(Tag.KW_VERDADEIRO)
 			|| eat(Tag.KW_FALSO)) {     
 		return;
 	} else if(eat(Tag.ID)){
