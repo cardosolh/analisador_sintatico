@@ -86,21 +86,21 @@ public class Parser {
 	public void Programa() {
     System.out.println("[DEBUG] Programa()");
 
-        if(!eat(Tag.KW_ALGORITMO)) {
-            skip("Esperado \"algoritmo\", encontrado "  + "\"" + token.getLexema() + "\"");
+        if(eat(Tag.KW_ALGORITMO)) {RegexDeclVar();
+            ListaCmd();
+
+            if(!eat(Tag.KW_FIM)) { // espera "fim"
+                erroSintatico("Esperado \"fim\", encontrado "  + "\"" + token.getLexema() + "\"");
+            }
+
+            if(!eat(Tag.KW_ALGORITMO)) {
+                skip("Esperado \"algoritmo\", encontrado "  + "\"" + token.getLexema() + "\"");
+            }
+            ListaRotina();
+
         }
 
-        RegexDeclVar();
-        ListaCmd();
 
-        if(!eat(Tag.KW_FIM)) { // espera "fim"
-            erroSintatico("Esperado \"fim\", encontrado "  + "\"" + token.getLexema() + "\"");
-        }
-
-        if(!eat(Tag.KW_ALGORITMO)) {
-            skip("Esperado \"algoritmo\", encontrado "  + "\"" + token.getLexema() + "\"");
-        }
-       ListaRotina();
 	}
 
     //RegexDeclVar → “declare” Tipo ListaID";" DeclaraVar  [3] | ε [4]
@@ -108,13 +108,15 @@ public class Parser {
 
         System.out.println("[DEBUG] RegexDeclVar()");
         //RegexDeclVar → “declare” Tipo ListaID";" DeclaraVar  [3]
-        if(eat(Tag.KW_DECLARE)) {
+        if(token.getClasse() == Tag.KW_DECLARE) {
+            if(!eat(Tag.KW_DECLARE)) {
+                skip("Esperado \"declare\", encontrado "  + "\"" + token.getLexema() + "\"");
+            }
             Tipo();
 			ListaID();
             if(!eat(Tag.SMB_SEMICOLON)) {
                 skip("Esperado \";\", encontrado "  + "\"" + token.getLexema() + "\"");
             }
-
             DeclaraVar();
         }
         //RegexDeclVar → ε [4]
@@ -135,8 +137,8 @@ public class Parser {
 	public void DeclaraVar() {
 		System.out.println("[DEBUG] DeclaraVar()");
 		//DeclaraVar → Tipo ListaID ";" DeclaraVar  [5]
-        if( token.getClasse() != Tag.KW_LOGICO || token.getClasse() != Tag.KW_NUMERICO ||
-            token.getClasse() != Tag.KW_LITERAL || token.getClasse() != Tag.KW_NULO) { // FIRST(Tipo)
+        if( token.getClasse() == Tag.KW_LOGICO || token.getClasse() == Tag.KW_NUMERICO ||
+            token.getClasse() == Tag.KW_LITERAL || token.getClasse() == Tag.KW_NULO) { // FIRST(Tipo)
             Tipo();
             ListaID();
 			if(!eat(Tag.SMB_SEMICOLON)) {
